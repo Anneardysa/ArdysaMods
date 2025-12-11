@@ -99,7 +99,7 @@ This project is developed and maintained by **Ardysa**. All rights reserved.
 
 -  The amazing Dota 2 modding community
 -  Valve for creating such a moddable game
--  All the mod creators whose work this tool helps manage
+-  All the mod creators Dota2SkinChanger.com](https://dota2changer.com) whose work this tool helps manage
 -  Everyone who has provided feedback and suggestions
 
 ---
@@ -108,6 +108,6 @@ This project is developed and maintained by **Ardysa**. All rights reserved.
 
 **Made with ❤️ for the Dota 2 Community**
 
-_© 2024-2025 Ardysa. All rights reserved._
+_© 2025-2026 Ardysa. All rights reserved._
 
 </div>

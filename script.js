@@ -186,4 +186,68 @@ if (particlesContainer) {
     }
 }
 
+// ========================================
+// GitHub Release API - Fetch Latest Version
+// ========================================
+async function fetchLatestRelease() {
+    const versionText = document.getElementById('version-text');
+    const installerBtn = document.getElementById('download-installer');
+    const portableBtn = document.getElementById('download-portable');
+    const installerSize = document.getElementById('installer-size');
+    const portableSize = document.getElementById('portable-size');
+    
+    try {
+        const response = await fetch('https://api.github.com/repos/Anneardysa/ArdysaModsTools/releases/latest');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch release');
+        }
+        
+        const release = await response.json();
+        const version = release.tag_name;
+        
+        // Update version badge
+        if (versionText) {
+            versionText.textContent = `Version ${version.replace('v', '')}`;
+        }
+        
+        // Find assets
+        const assets = release.assets || [];
+        const installerAsset = assets.find(a => a.name.endsWith('.exe') && a.name.includes('Setup'));
+        const portableAsset = assets.find(a => a.name.endsWith('.zip'));
+        
+        // Update installer button
+        if (installerBtn && installerAsset) {
+            installerBtn.href = installerAsset.browser_download_url;
+            if (installerSize) {
+                const sizeMB = (installerAsset.size / (1024 * 1024)).toFixed(1);
+                installerSize.textContent = `(${sizeMB} MB)`;
+            }
+        }
+        
+        // Update portable button
+        if (portableBtn && portableAsset) {
+            portableBtn.href = portableAsset.browser_download_url;
+            if (portableSize) {
+                const sizeMB = (portableAsset.size / (1024 * 1024)).toFixed(1);
+                portableSize.textContent = `(${sizeMB} MB)`;
+            }
+        }
+        
+        console.log(`✅ Loaded release: ${version}`);
+        
+    } catch (error) {
+        console.warn('⚠️ Could not fetch latest release, using fallback:', error.message);
+        
+        // Fallback to static version
+        if (versionText) {
+            versionText.textContent = 'Version 2.1.0-beta';
+        }
+    }
+}
+
+// Fetch release info on page load
+fetchLatestRelease();
+
 console.log('🎮 ArdysaModsTools - Made with ❤️ for the Dota 2 Community');
+

@@ -1,0 +1,728 @@
+[
+    {
+        "hero": "Abaddon",
+        "image": "assets/updates/abba.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Alchemist",
+        "image": "assets/updates/alche.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Ancient Apparition",
+        "image": "assets/updates/ancien.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Anti-Mage",
+        "image": "assets/updates/antimage.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Arc Warden",
+        "image": "assets/updates/arc.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Axe",
+        "image": "assets/updates/axe.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Bane",
+        "image": "assets/updates/bane.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Batrider",
+        "image": "assets/updates/bat.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Bloodseeker",
+        "image": "assets/updates/blood.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Bounty Hunter",
+        "image": "assets/updates/bounty.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Brewmaster",
+        "image": "assets/updates/brew.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Bristleback",
+        "image": "assets/updates/bristle.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Broodmother",
+        "image": "assets/updates/brood.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Centaur Warrunner",
+        "image": "assets/updates/centa.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Chaos Knight",
+        "image": "assets/updates/chaos.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Chen",
+        "image": "assets/updates/chen.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Clinkz",
+        "image": "assets/updates/clinkz.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Clockwerk",
+        "image": "assets/updates/clockwerk.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Crystal Maiden",
+        "image": "assets/updates/crystal.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Dark Seer",
+        "image": "assets/updates/darkseer.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Dark Willow",
+        "image": "assets/updates/darkwillow.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Dawnbreaker",
+        "image": "assets/updates/dawn.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Dazzle",
+        "image": "assets/updates/dazzle.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Death Prophet",
+        "image": "assets/updates/deathprophet.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Disruptor",
+        "image": "assets/updates/disrup.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Doom",
+        "image": "assets/updates/doom.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Dragon Knight",
+        "image": "assets/updates/dragon.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Drow Ranger",
+        "image": "assets/updates/drow.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Earth Spirit",
+        "image": "assets/updates/earthspirit.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Earthshaker",
+        "image": "assets/updates/earthshaker.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Elder Titan",
+        "image": "assets/updates/elder.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Ember Spirit",
+        "image": "assets/updates/ember.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Enchantress",
+        "image": "assets/updates/enchan.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Enigma",
+        "image": "assets/updates/enigma.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Faceless Void",
+        "image": "assets/updates/faceless.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Grimstroke",
+        "image": "assets/updates/grim.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Gyrocopter",
+        "image": "assets/updates/gyro.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Hoodwink",
+        "image": "assets/updates/hood.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Huskar",
+        "image": "assets/updates/huskar.jpg",
+        "date": "2026-01-30",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Invoker",
+        "image": "assets/updates/invo.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Io",
+        "image": "assets/updates/io.jpg",
+        "date": "2026-01-30",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Jakiro",
+        "image": "assets/updates/jakiro.jpg",
+        "date": "2026-01-30",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Juggernaut",
+        "image": "assets/updates/jugg.jpg",
+        "date": "2026-01-30",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Keeper of the Light",
+        "image": "assets/updates/keeper.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Kunkka",
+        "image": "assets/updates/kunkka.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Legion Commander",
+        "image": "assets/updates/legio.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Leshrac",
+        "image": "assets/updates/lesh.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Lich",
+        "image": "assets/updates/lich.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Lifestealer",
+        "image": "assets/updates/life.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Lina",
+        "image": "assets/updates/lina.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Lion",
+        "image": "assets/updates/lion.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Lone Druid",
+        "image": "assets/updates/lone.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Luna",
+        "image": "assets/updates/luna.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Lycan",
+        "image": "assets/updates/lycan.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Magnus",
+        "image": "assets/updates/magnus.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Marci",
+        "image": "assets/updates/marci.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Mars",
+        "image": "assets/updates/mars.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Medusa",
+        "image": "assets/updates/medusa.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Meepo",
+        "image": "assets/updates/meepo.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Mirana",
+        "image": "assets/updates/mirana.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Monkey King",
+        "image": "assets/updates/monkey.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Morphling",
+        "image": "assets/updates/morph.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Muerta",
+        "image": "assets/updates/muerta.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Naga Siren",
+        "image": "assets/updates/naga.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Nature's Prophet",
+        "image": "assets/updates/nature.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Necrophos",
+        "image": "assets/updates/necro.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Night Stalker",
+        "image": "assets/updates/night.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Nyx Assassin",
+        "image": "assets/updates/nyx.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Ogre Magi",
+        "image": "assets/updates/ogre.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Omniknight",
+        "image": "assets/updates/omni.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Oracle",
+        "image": "assets/updates/oracle.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Pangolier",
+        "image": "assets/updates/pango.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Phantom Assassin",
+        "image": "assets/updates/phantomass.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Phantom Lancer",
+        "image": "assets/updates/phantomlanc.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Phoenix",
+        "image": "assets/updates/phoenix.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Primal Beast",
+        "image": "assets/updates/primal.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Puck",
+        "image": "assets/updates/puck.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Pudge",
+        "image": "assets/updates/pudge.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Pugna",
+        "image": "assets/updates/pugna.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Queen of Pain",
+        "image": "assets/updates/queen.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Razor",
+        "image": "assets/updates/razor.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Riki",
+        "image": "assets/updates/riki.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Rubick",
+        "image": "assets/updates/rubick.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Shadow Demon",
+        "image": "assets/updates/shadowdemo.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Shadow Fiend",
+        "image": "assets/updates/shadowfiend.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Shadow Shaman",
+        "image": "assets/updates/shadowshaman.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Silencer",
+        "image": "assets/updates/silencer.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Skywrath Mage",
+        "image": "assets/updates/sky.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Slardar",
+        "image": "assets/updates/slardar.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Slark",
+        "image": "assets/updates/slark.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Snapfire",
+        "image": "assets/updates/snap.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Sniper",
+        "image": "assets/updates/sniper.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Spectre",
+        "image": "assets/updates/spectre.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Spirit Breaker",
+        "image": "assets/updates/spiritbreaker.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Storm Spirit",
+        "image": "assets/updates/stormspirit.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Sven",
+        "image": "assets/updates/sven.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Techies",
+        "image": "assets/updates/techies.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Templar Assassin",
+        "image": "assets/updates/templar.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Terrorblade",
+        "image": "assets/updates/terror.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Tidehunter",
+        "image": "assets/updates/tide.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Timbersaw",
+        "image": "assets/updates/timber.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Tinker",
+        "image": "assets/updates/tinker.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Tiny",
+        "image": "assets/updates/tiny.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Treant Protector",
+        "image": "assets/updates/treant.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Troll Warlord",
+        "image": "assets/updates/troll.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Tusk",
+        "image": "assets/updates/tusk.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Underlord",
+        "image": "assets/updates/under.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Undying",
+        "image": "assets/updates/undy.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Ursa",
+        "image": "assets/updates/ursa.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Vengeful Spirit",
+        "image": "assets/updates/venge.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Venomancer",
+        "image": "assets/updates/veno.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Viper",
+        "image": "assets/updates/viper.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Visage",
+        "image": "assets/updates/vysage.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Void Spirit",
+        "image": "assets/updates/void.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Warlock",
+        "image": "assets/updates/warlock.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Weaver",
+        "image": "assets/updates/weaver.jpg",
+        "date": "2026-01-31",
+        "attribute": "Agility"
+    },
+    {
+        "hero": "Windranger",
+        "image": "assets/updates/wind.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Winter Wyvern",
+        "image": "assets/updates/winter.jpg",
+        "date": "2026-01-31",
+        "attribute": "Universal"
+    },
+    {
+        "hero": "Witch Doctor",
+        "image": "assets/updates/witch.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    },
+    {
+        "hero": "Wraith King",
+        "image": "assets/updates/wraith.jpg",
+        "date": "2026-01-31",
+        "attribute": "Strength"
+    },
+    {
+        "hero": "Zeus",
+        "image": "assets/updates/zeus.jpg",
+        "date": "2026-01-31",
+        "attribute": "Intelligence"
+    }
+]

@@ -1,0 +1,28 @@
+# General
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# Tooling
+.agent/
+
+# Build/Assets
+dist/
+build/
+
+# Project Specific
+generate_updates.py

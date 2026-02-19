@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>What's New - ArdysaModsTools</title>
+      <link
+         rel="icon"
+         type="image/png"
+         href="https://raw.githubusercontent.com/Anneardysa/ArdysaMods/refs/heads/main/assets/logo.png"
+      />
+      <meta name="description" content="Full release history and changelogs for ArdysaModsTools." />
+      <link rel="stylesheet" href="style.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      />
+      <style>
+         /* ─── What's New page-specific styles ─────────────── */
+
+         .whatsnew-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            min-height: 100vh;
+         }
+
+         /* ── Release card ───────────────────────────────────── */
+
+         .release-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition:
+               border-color 0.3s ease,
+               transform 0.2s ease;
+            position: relative;
+         }
+
+         .release-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: background 0.3s ease;
+         }
+
+         .release-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+         }
+
+         .release-card:hover::before {
+            background: rgba(255, 255, 255, 0.4);
+         }
+
+         /* ── Header ─────────────────────────────────────────── */
+
+         .release-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+         }
+
+         .release-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+         }
+
+         .release-version {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary, #fff);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s ease;
+         }
+
+         .release-version:hover {
+            opacity: 0.75;
+         }
+
+         .release-version i {
+            font-size: 0.85em;
+            opacity: 0.5;
+         }
+
+         .latest-badge {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--text-primary, #fff);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+         }
+
+         .release-date {
+            font-size: 0.82rem;
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            display: flex;
+            align-items: center;
+            gap: 6px;
+         }
+
+         /* ── Meta row (date + copy button) ──────────────────── */
+
+         .release-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+         }
+
+         .copy-link-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary, rgba(255, 255, 255, 0.4));
+            cursor: pointer;
+            padding: 5px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+         }
+
+         .copy-link-btn:hover {
+            color: var(--text-primary, #fff);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+         }
+
+         .copy-link-btn.copied {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.3);
+         }
+
+         /* ── Highlight for deep-linked cards ────────────────── */
+
+         .release-card.highlighted {
+            border-color: rgba(255, 255, 255, 0.35);
+            animation: highlight-pulse 3s ease-out;
+         }
+
+         .release-card.highlighted::before {
+            background: rgba(255, 255, 255, 0.6);
+         }
+
+         @keyframes highlight-pulse {
+            0% {
+               box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+            }
+            30% {
+               box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.1);
+            }
+            100% {
+               box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+         }
+
+         /* ── Body content ───────────────────────────────────── */
+
+         .release-body {
+            padding: 24px;
+            line-height: 1.7;
+            color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+            font-size: 0.9rem;
+         }
+
+         .release-body h3 {
+            color: var(--text-primary, #fff);
+            font-size: 1.05rem;
+            margin: 24px 0 10px;
+            font-weight: 700;
+         }
+
+         .release-body h3:first-child {
+            margin-top: 0;
+         }
+
+         .release-body h4 {
+            color: var(--text-primary, #fff);
+            font-size: 0.95rem;
+            margin: 20px 0 8px;
+            font-weight: 600;
+         }
+
+         .release-body h5 {
+            color: var(--text-primary, #fff);
+            font-size: 0.88rem;
+            margin: 16px 0 6px;
+            font-weight: 600;
+         }
+
+         .release-body p {
+            margin: 8px 0;
+         }
+
+         .release-body ul,
+         .release-body ol {
+            padding-left: 24px;
+            margin: 8px 0;
+         }
+
+         .release-body li {
+            margin: 4px 0;
+         }
+
+         .release-body code {
+            font-family: "JetBrains Mono", monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: var(--text-primary, #fff);
+         }
+
+         .release-body pre {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            overflow-x: auto;
+         }
+
+         .release-body pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.82rem;
+         }
+
+         .release-body hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 20px 0;
+         }
+
+         .release-body blockquote {
+            border-left: 3px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            margin: 12px 0;
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            font-style: italic;
+         }
+
+         .release-body a {
+            color: var(--text-primary, #fff);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(255, 255, 255, 0.3);
+            transition: text-decoration-color 0.2s ease;
+         }
+
+         .release-body a:hover {
+            text-decoration-color: rgba(255, 255, 255, 0.7);
+         }
+
+         .release-body strong {
+            color: var(--text-primary, #fff);
+            font-weight: 600;
+         }
+
+         .release-body del {
+            opacity: 0.5;
+         }
+
+         /* ── Fallback text for empty bodies ─────────────────── */
+
+         .fallback-text {
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+         }
+
+         .fallback-text i {
+            opacity: 0.5;
+         }
+
+         /* ── No releases / error state ──────────────────────── */
+
+         .no-releases {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+         }
+
+         .no-releases i {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+            opacity: 0.4;
+         }
+
+         .no-releases.error i {
+            color: #ff6b6b;
+            opacity: 0.7;
+         }
+
+         .no-releases small {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.78rem;
+            opacity: 0.6;
+         }
+
+         /* ── Loading placeholder ─────────────────────────────── */
+
+         .loading-card {
+            opacity: 0.5;
+            pointer-events: none;
+         }
+
+         .loading-card .release-body {
+            text-align: center;
+            padding: 40px;
+         }
+
+         .loading-card .fa-spinner {
+            font-size: 2rem;
+            margin-bottom: 10px;
+         }
+
+         /* ── Footer override ────────────────────────────────── */
+
+         .footer {
+            position: relative;
+            z-index: 10;
+         }
+
+         .footer-content-mini {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            padding: 40px 0;
+         }
+
+         .footer-logo {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+         }
+
+         .footer-links-mini {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+         }
+
+         .footer-links-mini a {
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+         }
+
+         .footer-links-mini a:hover {
+            color: var(--text-primary, #fff);
+         }
+
+         .footer-socials-big {
+            display: flex;
+            gap: 20px;
+         }
+
+         .footer-socials-big a {
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+         }
+
+         .footer-socials-big a:hover {
+            color: var(--text-primary, #fff);
+         }
+
+         /* ── Responsive ─────────────────────────────────────── */
+
+         @media (max-width: 768px) {
+            .whatsnew-section {
+               padding-top: 100px;
+               padding-bottom: 40px;
+            }
+
+            .release-header {
+               padding: 16px 18px;
+            }
+
+            .release-version {
+               font-size: 1rem;
+            }
+
+            .release-body {
+               padding: 18px;
+               font-size: 0.85rem;
+            }
+
+            .release-card {
+               margin-bottom: 16px;
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Animated Background (Same as index.html) -->
+      <div class="animated-bg">
+         <div class="gradient-orb orb-1"></div>
+         <div class="gradient-orb orb-2"></div>
+         <div class="gradient-orb orb-3"></div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="navbar">
+         <div class="nav-container">
+            <a href="index.html" class="logo">
+               <span>ArdysaModsTools</span>
+            </a>
+            <ul class="nav-links">
+               <li><a href="index.html#features">Features</a></li>
+               <li><a href="index.html#download">Download</a></li>
+               <li><a href="updates.html">Updates</a></li>
+               <li><a href="whatsnew.html" style="color: var(--text-primary)">What's New</a></li>
+               <li><a href="index.html#community">Community</a></li>
+               <li><a href="index.html#support">Support</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+               <i class="fas fa-bars"></i>
+            </button>
+         </div>
+      </nav>
+
+      <!-- What's New Section -->
+      <section class="whatsnew-section">
+         <div class="container">
+            <div class="section-header">
+               <span class="section-tag">Changelog</span>
+               <h2>What's New</h2>
+               <p class="section-subtitle">
+                  Full release history and changelogs for ArdysaModsTools
+               </p>
+            </div>
+
+            <div id="releases-container">
+               <!-- Loading placeholder -->
+               <div class="release-card loading-card">
+                  <div class="release-body">
+                     <i class="fas fa-spinner fa-spin"></i>
+                     <p>Loading releases...</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+         <div class="container">
+            <div class="footer-content-mini">
+               <div class="footer-logo">ArdysaModsTools</div>
+               <div class="footer-links-mini">
+                  <a href="index.html">Home</a>
+                  <a href="index.html#features">Features</a>
+                  <a href="index.html#download">Download</a>
+                  <a href="index.html#support">Support</a>
+               </div>
+               <div class="footer-socials-big">
+                  <a href="https://discord.gg/ffXw265Z7e" aria-label="Discord"
+                     ><i class="fab fa-discord"></i
+                  ></a>
+                  <a href="https://www.youtube.com/@Ardysa" aria-label="YouTube"
+                     ><i class="fab fa-youtube"></i
+                  ></a>
+                  <a href="https://github.com/Anneardysa/ArdysaModsTools" aria-label="GitHub"
+                     ><i class="fab fa-github"></i
+                  ></a>
+               </div>
+               <p class="copyright">© 2025-2026 Ardysa. All rights reserved.</p>
+            </div>
+         </div>
+      </footer>
+
+      <script src="script.js"></script>
+      <script src="whatsnew.js"></script>
+   </body>
+</html>

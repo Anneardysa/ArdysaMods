@@ -803,6 +803,277 @@ body {
    color: var(--text-primary);
    font-size: 16px;
 }
+/* ModsPack preview showcase */
+.modspack-preview {
+   margin-bottom: 40px;
+}
+.modspack-preview-head {
+   display: flex;
+   align-items: flex-end;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   gap: 16px;
+   margin-bottom: 20px;
+}
+.modspack-preview-head h3 {
+   font-size: 22px;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   margin: 8px 0 0;
+}
+.modspack-preview-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+   color: var(--text-secondary);
+   text-decoration: none;
+   font-size: 13px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   transition: var(--transition);
+   white-space: nowrap;
+}
+.modspack-preview-link:hover {
+   color: var(--accent);
+   gap: 14px;
+}
+.modspack-preview-grid {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   gap: 14px;
+}
+.preview-tile {
+   position: relative;
+   display: block;
+   aspect-ratio: 3 / 4;
+   overflow: hidden;
+   border: 1px solid var(--border);
+   text-decoration: none;
+   transition: var(--transition);
+}
+.preview-tile:hover {
+   border-color: var(--accent);
+   box-shadow: 0 0 25px rgba(255, 255, 255, 0.06);
+}
+.preview-tile img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.5s ease;
+}
+.preview-tile:hover img {
+   transform: scale(1.08);
+}
+.preview-name {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding: 24px 12px 12px;
+   font-size: 12px;
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   color: #fff;
+   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+.preview-tile--more img {
+   filter: brightness(0.4);
+}
+.preview-more {
+   position: absolute;
+   inset: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 4px;
+   text-align: center;
+   color: #fff;
+}
+.preview-more i {
+   font-size: 22px;
+   margin-bottom: 6px;
+   color: var(--accent);
+}
+.preview-more strong {
+   font-size: 15px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+.preview-more small {
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   color: var(--text-secondary);
+}
+@media (max-width: 768px) {
+   .modspack-preview-grid {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+@media (max-width: 480px) {
+   .modspack-preview-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+/* Install & Update tutorial */
+.tutorial-section {
+   margin-top: 40px;
+   margin-bottom: 40px;
+   scroll-margin-top: 90px;
+}
+.tutorial-grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 24px;
+   margin-top: 32px;
+}
+@media (min-width: 860px) {
+   .tutorial-grid {
+      grid-template-columns: 1fr 1fr;
+   }
+}
+.tutorial-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 32px 28px;
+   transition: var(--transition);
+}
+.tutorial-card:hover {
+   border-color: var(--accent);
+   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+.tutorial-card h3 {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   font-size: 1.25rem;
+   font-weight: 800;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   margin-bottom: 24px;
+   color: var(--text-primary);
+}
+.tutorial-card h3 i {
+   color: var(--accent);
+   font-size: 1.1rem;
+}
+.tutorial-steps {
+   list-style: none;
+   counter-reset: step;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+}
+.tutorial-steps > li {
+   counter-increment: step;
+   position: relative;
+   padding-left: 48px;
+   color: var(--text-secondary);
+   line-height: 1.6;
+}
+.tutorial-steps > li::before {
+   content: counter(step);
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--accent-dim);
+   border: 1px solid var(--border);
+   border-radius: 50%;
+   color: var(--text-primary);
+   font-weight: 700;
+   font-size: 0.85rem;
+}
+.tutorial-steps strong {
+   color: var(--text-primary);
+   font-weight: 700;
+}
+.tutorial-steps code {
+   font-family: "JetBrains Mono", monospace;
+   background: var(--accent-dim);
+   border: 1px solid var(--border);
+   padding: 2px 8px;
+   border-radius: 6px;
+   font-size: 0.85rem;
+   color: var(--text-primary);
+   white-space: nowrap;
+}
+.mod-download-links {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 12px;
+   margin: 14px 0 4px;
+}
+.mod-dl-btn {
+   flex: 1 1 180px;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   padding: 12px 14px;
+   background: var(--bg-secondary);
+   border: 1px solid var(--border);
+   text-decoration: none;
+   color: var(--text-primary);
+   transition: var(--transition);
+}
+.mod-dl-btn:hover {
+   border-color: var(--accent);
+   background: var(--accent-dim);
+   transform: translateY(-2px);
+}
+.mod-dl-icon {
+   flex-shrink: 0;
+   width: 38px;
+   height: 38px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--accent-dim);
+   border: 1px solid var(--border);
+   border-radius: 50%;
+   font-size: 1rem;
+   color: var(--text-primary);
+   transition: var(--transition);
+}
+.mod-dl-btn:hover .mod-dl-icon {
+   border-color: var(--accent);
+}
+.mod-dl-text {
+   display: flex;
+   flex-direction: column;
+   line-height: 1.25;
+}
+.mod-dl-text strong {
+   font-size: 0.95rem;
+   font-weight: 700;
+   color: var(--text-primary);
+}
+.mod-dl-text small {
+   font-size: 0.68rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+.mod-dl-arrow {
+   margin-left: auto;
+   font-size: 0.85rem;
+   color: var(--text-muted);
+   transition: var(--transition);
+}
+.mod-dl-btn:hover .mod-dl-arrow {
+   color: var(--accent);
+   transform: translateY(2px);
+}
 .system-requirements {
    padding: 32px;
    background: var(--bg-card);

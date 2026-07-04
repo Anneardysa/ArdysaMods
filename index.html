@@ -7,7 +7,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-      
+
         gtag('config', 'G-4NVXQ1EYMC');
       </script>
       <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
          content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
       />
       <link rel="canonical" href="https://ardysamods.my.id/" />
-      <link rel="stylesheet" href="style.css?v=20260627d" />
+      <link rel="stylesheet" href="style.css?v=20260704l" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
@@ -35,726 +35,187 @@
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       />
    </head>
-   <body>
-      <!-- Animated Background -->
-      <div class="animated-bg">
-         <div class="gradient-orb orb-1"></div>
-         <div class="gradient-orb orb-2"></div>
-         <div class="gradient-orb orb-3"></div>
-         <div class="particles">
-            <span></span><span></span><span></span><span></span><span></span> <span></span
-            ><span></span><span></span><span></span><span></span>
+   <body class="landing">
+      <!-- Fullscreen cinematic backdrop -->
+      <div class="animated-bg"></div>
+
+      <!-- Randomly-spawned lightning streaks (decorative, JS-driven) -->
+      <div class="fx-lightning" aria-hidden="true"></div>
+
+      <!-- Accessible page title for SEO / screen readers -->
+      <h1 class="sr-only">ArdysaModsTools — The Ultimate Dota 2 Mod Manager</h1>
+
+      <main class="landing-shell">
+         <!-- ── Top-left: Logo ─────────────────────────────── -->
+         <a href="/" class="lp-logo logo">
+            <img
+               src="https://cdn.ardysamods.my.id/image/ardysa.svg"
+               alt="ArdysaModsTools logo"
+               class="lp-logo-mark"
+               width="26"
+               height="26"
+            />
+            <span>ArdysaModsTools</span>
+         </a>
+
+         <!-- ── Top-right: What's New link + Download App ────── -->
+         <div class="lp-nav">
+            <a
+               href="whatsnew"
+               class="lp-nav-link"
+               data-modal
+               data-modal-title="What's New"
+               data-modal-icon="fa-bolt"
+            >What's New</a>
+            <div class="lp-download" id="lp-download">
+            <button
+               class="lp-dl-toggle"
+               id="dl-toggle"
+               type="button"
+               aria-haspopup="true"
+               aria-expanded="false"
+               aria-controls="dl-menu"
+            >
+               <i class="fas fa-download"></i>
+               <span>Download App</span>
+               <i class="fas fa-chevron-down lp-dl-caret"></i>
+            </button>
+            <div class="lp-dl-menu" id="dl-menu" role="menu">
+               <div class="lp-dl-menu-head">
+                  <span class="lp-dl-head-label">
+                     <i class="fas fa-rocket"></i> Latest Build
+                  </span>
+                  <span class="lp-dl-ver" id="version-text">Loading…</span>
+               </div>
+               <div class="lp-dl-list">
+                  <a
+                     id="download-installer"
+                     class="lp-dl-item lp-dl-item--rec"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     role="menuitem"
+                  >
+                     <span class="lp-dl-ic"><i class="fas fa-compact-disc"></i></span>
+                     <span class="lp-dl-info">
+                        <span class="lp-dl-titlerow">
+                           <strong>Installer</strong>
+                           <span class="lp-dl-badge">Recommended</span>
+                        </span>
+                        <small>Guided setup &amp; automatic updates</small>
+                        <span class="lp-dl-size"><i class="fas fa-hard-drive"></i><span id="installer-size" class="download-size"></span></span>
+                     </span>
+                     <span class="lp-dl-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                  </a>
+                  <a
+                     id="download-portable"
+                     class="lp-dl-item"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     role="menuitem"
+                  >
+                     <span class="lp-dl-ic"><i class="fas fa-folder-open"></i></span>
+                     <span class="lp-dl-info">
+                        <span class="lp-dl-titlerow">
+                           <strong>Portable</strong>
+                        </span>
+                        <small>No install — run from anywhere</small>
+                        <span class="lp-dl-size"><i class="fas fa-hard-drive"></i><span id="portable-size" class="download-size"></span></span>
+                     </span>
+                     <span class="lp-dl-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                  </a>
+               </div>
+            </div>
+            </div>
+         </div>
+
+         <!-- ── Bottom-left: Tagline + View ModsPack ────────── -->
+         <div class="lp-intro">
+            <p class="lp-tagline">
+               The ultimate Dota 2 mod manager — install, manage, and organize your
+               cosmetic mods with a sleek, one-click interface.
+            </p>
+            <a
+               href="updates"
+               class="lp-link"
+               data-modal
+               data-modal-title="ModsPack"
+               data-modal-icon="fa-layer-group"
+            >
+               View ModsPack <i class="fas fa-arrow-right"></i>
+            </a>
+         </div>
+
+         <!-- ── Bottom-right: Community / Discord ───────────── -->
+         <div class="lp-community">
+            <span class="lp-community-label">AMT Community</span>
+            <p class="lp-community-text">
+               Get support, mod showcases, and the latest ModsPack updates
+               straight from the community.
+            </p>
+            <a
+               href="https://discord.gg/ffXw265Z7e"
+               class="lp-discord"
+               target="_blank"
+               rel="noopener"
+            >
+               <i class="fab fa-discord"></i>
+               <span>Join the Discord</span>
+            </a>
+         </div>
+      </main>
+
+      <!-- ── Modal: embeds What's New / ModsPack pages ──────── -->
+      <div class="lp-modal" id="lp-modal" aria-hidden="true">
+         <div class="lp-modal__backdrop" data-close></div>
+         <div
+            class="lp-modal__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lp-modal-title"
+         >
+            <header class="lp-modal__bar">
+               <span class="lp-modal__title" id="lp-modal-title">
+                  <i class="fas fa-layer-group" id="lp-modal-icon"></i>
+                  <span id="lp-modal-titletext">ModsPack</span>
+               </span>
+               <div class="lp-modal__actions">
+                  <a
+                     class="lp-modal__btn"
+                     id="lp-modal-open"
+                     href="#"
+                     target="_blank"
+                     rel="noopener"
+                     title="Open full page"
+                     aria-label="Open full page"
+                  >
+                     <i class="fas fa-up-right-from-square"></i>
+                  </a>
+                  <button
+                     class="lp-modal__btn lp-modal__close"
+                     type="button"
+                     data-close
+                     aria-label="Close"
+                  >
+                     <i class="fas fa-xmark"></i>
+                  </button>
+               </div>
+            </header>
+            <div class="lp-modal__body">
+               <div class="lp-modal__loader" id="lp-modal-loader">
+                  <span class="lp-modal__spin"></span>
+               </div>
+               <iframe
+                  class="lp-modal__frame"
+                  id="lp-modal-frame"
+                  title="ArdysaModsTools content"
+                  loading="lazy"
+               ></iframe>
+            </div>
          </div>
       </div>
 
-      <!-- Navigation -->
-      <nav class="navbar">
-         <div class="nav-container">
-            <a href="#" class="logo">
-               <span>ArdysaModsTools</span>
-            </a>
-            <ul class="nav-links">
-               <li><a href="#features">Features</a></li>
-               <li><a href="#download">Download</a></li>
-               <li><a href="updates">Updates</a></li>
-               <li><a href="whatsnew">What's New</a></li>
-               <li><a href="#community">Community</a></li>
-               <li><a href="#support">Support</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-               <i class="fas fa-bars"></i>
-            </button>
-         </div>
-      </nav>
-
-      <!-- Hero Section -->
-      <section class="hero" id="home">
-         <div class="hero-content">
-            <div class="hero-badge" id="version-badge">
-               <i class="fas fa-rocket"></i>
-               <span id="version-text">Loading...</span>
-            </div>
-            <h1>The Ultimate <span class="gradient-text">Dota 2</span> Mod Manager</h1>
-            <p class="hero-subtitle">
-               Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern
-               interface.
-            </p>
-            <div class="hero-buttons">
-               <a href="#download" class="btn btn-primary">
-                  <i class="fas fa-download"></i>
-                  Download Now
-               </a>
-               <a href="#features" class="btn btn-secondary">
-                  <i class="fas fa-info-circle"></i>
-                  Learn More
-               </a>
-            </div>
-            <div class="hero-stats">
-               <div class="stat">
-                  <span class="stat-number">100+</span>
-                  <span class="stat-label">Hero Sets</span>
-               </div>
-               <div class="stat">
-                  <span class="stat-number">1-Click</span>
-                  <span class="stat-label">Install</span>
-               </div>
-               <div class="stat">
-                  <span class="stat-number">Free</span>
-                  <span class="stat-label">Forever</span>
-               </div>
-            </div>
-         </div>
-         <div class="hero-preview">
-            <div class="app-showcase">
-               <div class="app-image side left">
-                  <img src="assets/app_2.jpg" alt="ArdysaModsTools Screenshot 2" loading="lazy" />
-               </div>
-               <div class="app-image center">
-                  <img src="assets/app_1.jpg" alt="ArdysaModsTools Main" loading="lazy" />
-               </div>
-               <div class="app-image side right">
-                  <img src="assets/app_3.jpg" alt="ArdysaModsTools Screenshot 3" loading="lazy" />
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Video Section -->
-      <section class="video-section" id="video">
-         <div class="container">
-            <div class="section-header">
-               <span class="section-tag">Tutorial</span>
-               <h2>See It In Action</h2>
-               <p class="section-subtitle">
-                  Watch how easy it is to install and manage your Dota 2 mods
-               </p>
-            </div>
-            <div class="video-wrapper">
-               <div class="video-container">
-                  <iframe
-                     src="https://www.youtube.com/embed/erk-6WFPOFo?rel=0"
-                     title="ArdysaModsTools Tutorial"
-                     frameborder="0"
-                     allow="
-                        accelerometer;
-                        autoplay;
-                        clipboard-write;
-                        encrypted-media;
-                        gyroscope;
-                        picture-in-picture;
-                        web-share;
-                     "
-                     allowfullscreen
-                  >
-                  </iframe>
-               </div>
-               <div class="video-features">
-                  <div class="video-feature">
-                     <i class="fas fa-play-circle"></i>
-                     <span>Quick Start Guide</span>
-                  </div>
-                  <div class="video-feature">
-                     <i class="fas fa-clock"></i>
-                     <span>Under 3 Minutes</span>
-                  </div>
-                  <div class="video-feature">
-                     <i class="fas fa-closed-captioning"></i>
-                     <span>Beginner Friendly</span>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Features Section -->
-      <section class="features" id="features">
-         <div class="container">
-            <div class="section-header">
-               <span class="section-tag">Features</span>
-               <h2>Powerful & Simple</h2>
-               <p class="section-subtitle">Modern tools designed to make modding effortless</p>
-            </div>
-            <div class="features-grid">
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-mask"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>Hero Set Gallery</h3>
-                     <p>
-                        Browse through a beautiful visual gallery of all available hero sets.
-                        Preview how each cosmetic looks before installing — pick the perfect style
-                        for your favorite heroes.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-star"></i>
-                        <span>Visual thumbnails for every set</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-box-open"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>Native VPK Support</h3>
-                     <p>
-                        Works directly with Valve's VPK format — no file conversion or manual
-                        extraction needed. The app handles all the technical complexity behind the
-                        scenes.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-lock"></i>
-                        <span>Safe & compatible with Dota 2</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-palette"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>Sleek Modern Design</h3>
-                     <p>
-                        Clean black-and-white interface that's easy on the eyes. Smooth animations
-                        and intuitive layouts make navigation feel natural and enjoyable.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-moon"></i>
-                        <span>Dark theme, easy on the eyes</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-bolt"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>One-Click Install</h3>
-                     <p>
-                        Select your mods, click install, done. No command lines, no complicated
-                        steps. Installing and removing mods takes just seconds.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-clock"></i>
-                        <span>Install mods in under 10 seconds</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-tachometer-alt"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>Live Progress Tracking</h3>
-                     <p>
-                        Watch downloads and installations happen in real-time with detailed progress
-                        bars. Know exactly what's happening and how long it'll take.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-info-circle"></i>
-                        <span>See file-by-file progress</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon">
-                     <i class="fas fa-shield-alt"></i>
-                  </div>
-                  <div class="feature-content">
-                     <h3>Smart Game Detection</h3>
-                     <p>
-                        Automatically knows when Dota 2 is running and warns you before making
-                        changes. Prevents conflicts and ensures your game files stay safe.
-                     </p>
-                     <div class="feature-highlight">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span>Auto-warns if Dota 2 is open</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Download Section -->
-      <section class="download" id="download">
-         <div class="container">
-            <div class="section-header">
-               <span class="section-tag">Download</span>
-               <h2>Get Started Now</h2>
-            </div>
-            <div class="download-cards">
-               <div class="download-card">
-                  <div class="download-icon pulse">
-                     <i class="fas fa-compact-disc"></i>
-                     <div class="icon-ring"></div>
-                  </div>
-                  <h3>Installer</h3>
-                  <p>Recommended for most users. Includes auto-updates.</p>
-                  <ul class="download-features">
-                     <li><i class="fas fa-check"></i> Auto Updates</li>
-                     <li><i class="fas fa-check"></i> Start Menu Integration</li>
-                     <li><i class="fas fa-check"></i> Easy Uninstall</li>
-                  </ul>
-                  <a
-                     id="download-installer"
-                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
-                     class="btn btn-primary download-btn-animated"
-                     target="_blank"
-                  >
-                     <i class="fas fa-download"></i>
-                     <span>Download Installer</span>
-                     <small class="download-size" id="installer-size"></small>
-                     <div class="btn-shine"></div>
-                  </a>
-               </div>
-               <div class="download-card">
-                  <div class="download-icon pulse">
-                     <i class="fas fa-folder-open"></i>
-                     <div class="icon-ring"></div>
-                  </div>
-                  <h3>Portable</h3>
-                  <p>No installation required. Extract and run anywhere.</p>
-                  <ul class="download-features">
-                     <li><i class="fas fa-check"></i> No Installation</li>
-                     <li><i class="fas fa-check"></i> Run Anywhere</li>
-                     <li><i class="fas fa-check"></i> USB Friendly</li>
-                  </ul>
-                  <a
-                     id="download-portable"
-                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
-                     class="btn btn-secondary download-btn-animated"
-                     target="_blank"
-                  >
-                     <i class="fas fa-file-archive"></i>
-                     <span>Download Portable</span>
-                     <small class="download-size" id="portable-size"></small>
-                     <div class="btn-shine"></div>
-                  </a>
-               </div>
-            </div>
-            <!-- ModsPack Preview -->
-            <div class="modspack-preview">
-               <div class="modspack-preview-head">
-                  <div>
-                     <span class="section-tag">ModsPack</span>
-                     <h3>A Peek Inside the Pack</h3>
-                  </div>
-                  <a href="updates" class="modspack-preview-link">
-                     View Updates <i class="fas fa-arrow-right"></i>
-                  </a>
-               </div>
-               <div class="modspack-preview-grid">
-                  <a href="updates" class="preview-tile">
-                     <img src="assets/updates/pudge.jpg" alt="Pudge" loading="lazy" />
-                     <span class="preview-name">Pudge</span>
-                  </a>
-                  <a href="updates" class="preview-tile">
-                     <img src="assets/updates/jugg.jpg" alt="Juggernaut" loading="lazy" />
-                     <span class="preview-name">Juggernaut</span>
-                  </a>
-                  <a href="updates" class="preview-tile">
-                     <img src="assets/updates/invo.jpg" alt="Invoker" loading="lazy" />
-                     <span class="preview-name">Invoker</span>
-                  </a>
-                  <a href="updates" class="preview-tile">
-                     <img src="assets/updates/spectre.jpg" alt="Spectre" loading="lazy" />
-                     <span class="preview-name">Spectre</span>
-                  </a>
-                  <a href="updates" class="preview-tile preview-tile--more">
-                     <img src="assets/updates/shadowfiend.jpg" alt="More mods" loading="lazy" />
-                     <span class="preview-more">
-                        <i class="fas fa-layer-group"></i>
-                        <strong>121+ Heroes</strong>
-                        <small>View all</small>
-                     </span>
-                  </a>
-               </div>
-            </div>
-            <!-- Install & Update Tutorial -->
-            <div class="tutorial-section" id="step-by-step">
-               <div class="section-header">
-                  <span class="section-tag">Step by Step</span>
-                  <h2>How To Install &amp; Update</h2>
-                  <p class="section-subtitle">
-                     Follow these simple steps to get the latest ModsPack running
-                  </p>
-               </div>
-               <div class="tutorial-grid">
-                  <!-- Auto Update -->
-                  <div class="tutorial-card tutorial-card--auto">
-                     <div class="tutorial-card-head">
-                        <span class="tutorial-card-icon"><i class="fas fa-bolt"></i></span>
-                        <div class="tutorial-card-titles">
-                           <h3>Update ModsPack</h3>
-                           <span class="tutorial-tag tutorial-tag--rec">
-                              <i class="fas fa-star"></i> Recommended &middot; Auto
-                           </span>
-                        </div>
-                     </div>
-                     <ol class="tutorial-steps">
-                        <li>Open <strong>ArdysaModsTools.exe</strong></li>
-                        <li>Check Dota 2 folder by doing <code>Auto/Manual Detect</code></li>
-                        <li>Open <code>Install ModsPack</code> &rarr; <strong>Auto Install</strong></li>
-                        <li>Do <code>Patch Update</code></li>
-                        <li>Run Dota 2</li>
-                     </ol>
-                     <p class="tutorial-done">
-                        <i class="fas fa-circle-check"></i> Done — launch and enjoy your mods!
-                     </p>
-                  </div>
-
-                  <!-- Manual Install -->
-                  <div class="tutorial-card">
-                     <div class="tutorial-card-head">
-                        <span class="tutorial-card-icon"><i class="fas fa-screwdriver-wrench"></i></span>
-                        <div class="tutorial-card-titles">
-                           <h3>Manual Install</h3>
-                           <span class="tutorial-tag">
-                              <i class="fas fa-gears"></i> Advanced &middot; Manual
-                           </span>
-                        </div>
-                     </div>
-                     <ol class="tutorial-steps">
-                        <li>
-                           Download the ModsPack file first:
-                           <div class="mod-download-links">
-                              <a
-                                 class="mod-dl-btn"
-                                 href="https://mega.nz/file/7Aw1wDCJ#rxaXuHfYWmimGM-eWlejrtApOlNvb-5xJx7SmT1GXpg"
-                                 target="_blank"
-                                 rel="noopener"
-                              >
-                                 <span class="mod-dl-icon"><i class="fas fa-cloud-arrow-down"></i></span>
-                                 <span class="mod-dl-text">
-                                    <strong>Mega</strong>
-                                    <small>Primary mirror</small>
-                                 </span>
-                                 <i class="fas fa-download mod-dl-arrow"></i>
-                              </a>
-                              <a
-                                 class="mod-dl-btn"
-                                 href="https://www.mediafire.com/file/d9m2ib3tphktc4s/mods-v3.1.zip"
-                                 target="_blank"
-                                 rel="noopener"
-                              >
-                                 <span class="mod-dl-icon"><i class="fas fa-hard-drive"></i></span>
-                                 <span class="mod-dl-text">
-                                    <strong>Mediafire</strong>
-                                    <small>Alternative mirror</small>
-                                 </span>
-                                 <i class="fas fa-download mod-dl-arrow"></i>
-                              </a>
-                           </div>
-                        </li>
-                        <li>Extract the downloaded file, you will get <code>pak01_dir.vpk</code></li>
-                        <li>Open <strong>ArdysaModsTools.exe</strong></li>
-                        <li>Check Dota 2 folder by doing <code>Auto/Manual Detect</code></li>
-                        <li>Open <code>Install ModsPack</code> &rarr; <strong>Manual Install</strong></li>
-                        <li>Find <code>pak01_dir.vpk</code> &rarr; Done</li>
-                        <li>Do <code>Patch Update</code></li>
-                        <li>Run Dota 2</li>
-                     </ol>
-                     <p class="tutorial-done">
-                        <i class="fas fa-circle-check"></i> Done — launch and enjoy your mods!
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="system-requirements">
-               <div class="req-header">
-                  <h4><i class="fas fa-check-double"></i> Everything You Need</h4>
-                  <p class="req-subtitle">Before you start, make sure you have these ready</p>
-               </div>
-
-               <div class="req-section">
-                  <div class="req-section-label">
-                     <span class="req-badge ready"><i class="fas fa-check"></i> You Have This</span>
-                  </div>
-                  <p class="req-section-hint">Most users already have these installed</p>
-                  <div class="req-cards">
-                     <div class="req-card has-detail">
-                        <div class="req-card-icon-wrap">
-                           <i class="fab fa-windows"></i>
-                        </div>
-                        <div class="req-card-info">
-                           <strong>Windows 10 or 11</strong>
-                           <span class="req-detail">64-bit version required</span>
-                        </div>
-                        <div class="req-card-status ok">
-                           <i class="fas fa-check-circle"></i>
-                        </div>
-                     </div>
-                     <div class="req-card has-detail">
-                        <div class="req-card-icon-wrap">
-                           <i class="fab fa-steam"></i>
-                        </div>
-                        <div class="req-card-info">
-                           <strong>Dota 2</strong>
-                           <span class="req-detail">Must be installed through Steam</span>
-                        </div>
-                        <div class="req-card-status ok">
-                           <i class="fas fa-check-circle"></i>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="req-section">
-                  <div class="req-section-label">
-                     <span class="req-badge download"
-                        ><i class="fas fa-download"></i> May Need to Install</span
-                     >
-                  </div>
-                  <p class="req-section-hint">
-                     Click to download if you don't have these — they're free!
-                  </p>
-                  <div class="req-cards">
-                     <a
-                        href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.22-windows-x64-installer"
-                        class="req-card has-detail clickable"
-                        target="_blank"
-                        title="Download .NET 8.0 Desktop Runtime from Microsoft"
-                     >
-                        <div class="req-card-icon-wrap">
-                           <i class="fas fa-cube"></i>
-                        </div>
-                        <div class="req-card-info">
-                           <strong>.NET 8.0 Desktop Runtime</strong>
-                           <span class="req-detail">Required to run the app • ~55 MB download</span>
-                        </div>
-                        <div class="req-card-action">
-                           <span>Download</span>
-                           <i class="fas fa-external-link-alt"></i>
-                        </div>
-                     </a>
-                     <a
-                        href="https://go.microsoft.com/fwlink/p/?LinkId=2124703"
-                        class="req-card has-detail clickable"
-                        target="_blank"
-                        title="Download WebView2 Runtime from Microsoft"
-                     >
-                        <div class="req-card-icon-wrap">
-                           <i class="fab fa-edge"></i>
-                        </div>
-                        <div class="req-card-info">
-                           <strong>Microsoft WebView2</strong>
-                           <span class="req-detail"
-                              >Usually comes with Windows • ~1 MB download</span
-                           >
-                        </div>
-                        <div class="req-card-action">
-                           <span>Download</span>
-                           <i class="fas fa-external-link-alt"></i>
-                        </div>
-                     </a>
-                  </div>
-               </div>
-
-               <div class="req-tip">
-                  <div class="req-tip-icon">
-                     <i class="fas fa-lightbulb"></i>
-                  </div>
-                  <div class="req-tip-content">
-                     <strong>Not sure what you have?</strong>
-                     <span
-                        >Just run the installer! It will automatically check and guide you to
-                        download anything missing.</span
-                     >
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Community Section -->
-      <section class="community" id="community">
-         <div class="container">
-            <div class="section-header">
-               <span class="section-tag">Community</span>
-               <h2>Join Our Community</h2>
-            </div>
-            <div class="community-cards">
-               <a
-                  href="https://discord.gg/ffXw265Z7e"
-                  class="community-card discord"
-                  target="_blank"
-               >
-                  <div class="community-icon">
-                     <i class="fab fa-discord"></i>
-                  </div>
-                  <h3>Discord Server</h3>
-                  <p>Join our Discord for support, updates, and mod showcases</p>
-                  <span class="community-action"
-                     >Join Server <i class="fas fa-arrow-right"></i
-                  ></span>
-               </a>
-               <a
-                  href="https://www.youtube.com/@Ardysa"
-                  class="community-card youtube"
-                  target="_blank"
-               >
-                  <div class="community-icon">
-                     <i class="fab fa-youtube"></i>
-                  </div>
-                  <h3>YouTube</h3>
-                  <p>Watch tutorials, mod showcases, and update videos</p>
-                  <span class="community-action"
-                     >Watch Videos <i class="fas fa-arrow-right"></i
-                  ></span>
-               </a>
-            </div>
-         </div>
-      </section>
-
-      <!-- Support/Donation Section -->
-      <section class="support" id="support">
-         <div class="container">
-            <div class="support-wrapper">
-               <div class="support-glow"></div>
-               <div class="support-content">
-                  <div class="support-header">
-                     <span class="section-tag">Support</span>
-                     <h2>Support the <span class="gradient-text">Development</span></h2>
-                     <p>
-                        ArdysaModsTools is free and always will be. Your support helps keep this
-                        project alive and growing!
-                     </p>
-                  </div>
-                  <div class="support-cards">
-                     <a href="https://paypal.me/Ardysa" class="support-card paypal" target="_blank">
-                        <div class="support-card-icon">
-                           <i class="fab fa-paypal"></i>
-                        </div>
-                        <div class="support-card-content">
-                           <h4>PayPal</h4>
-                           <span>One-time donation</span>
-                        </div>
-                        <i class="fas fa-arrow-right support-arrow"></i>
-                     </a>
-                     <a href="https://ko-fi.com/ardysa" class="support-card coffee" target="_blank">
-                        <div class="support-card-icon">
-                           <i class="fas fa-mug-hot"></i>
-                        </div>
-                        <div class="support-card-content">
-                           <h4>Buy Me a Coffee</h4>
-                           <span>Support monthly</span>
-                        </div>
-                        <i class="fas fa-arrow-right support-arrow"></i>
-                     </a>
-                  </div>
-                  <div class="support-note">
-                     <i class="fas fa-heart"></i>
-                     <span>Every contribution helps improve the tool for everyone</span>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="contact" id="contact">
-         <div class="container">
-            <div class="section-header">
-               <span class="section-tag">Contact</span>
-               <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-content">
-               <p class="contact-intro">
-                  Have questions, suggestions, or need help? Reach out through any of these
-                  channels.
-               </p>
-               <div class="contact-cards">
-                  <a
-                     href="https://discord.gg/ffXw265Z7e"
-                     class="contact-card discord"
-                     target="_blank"
-                  >
-                     <div class="contact-card-icon">
-                        <i class="fab fa-discord"></i>
-                     </div>
-                     <div class="contact-card-content">
-                        <h4>Discord</h4>
-                        <span>Fastest response • Community support</span>
-                     </div>
-                     <div class="contact-badge recommended">
-                        <i class="fas fa-star"></i> Recommended
-                     </div>
-                  </a>
-                  <a
-                     href="https://github.com/Anneardysa/ArdysaModsTools/issues"
-                     class="contact-card github"
-                     target="_blank"
-                  >
-                     <div class="contact-card-icon">
-                        <i class="fab fa-github"></i>
-                     </div>
-                     <div class="contact-card-content">
-                        <h4>GitHub Issues</h4>
-                        <span>Bug reports • Feature requests</span>
-                     </div>
-                     <i class="fas fa-arrow-right contact-arrow"></i>
-                  </a>
-                  <a
-                     href="https://www.youtube.com/@Ardysa"
-                     class="contact-card youtube"
-                     target="_blank"
-                  >
-                     <div class="contact-card-icon">
-                        <i class="fab fa-youtube"></i>
-                     </div>
-                     <div class="contact-card-content">
-                        <h4>YouTube</h4>
-                        <span>Tutorials • Updates • Showcases</span>
-                     </div>
-                     <i class="fas fa-arrow-right contact-arrow"></i>
-                  </a>
-               </div>
-               <div class="contact-note">
-                  <i class="fas fa-clock"></i>
-                  <span>Average response time on Discord: within 24 hours</span>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="footer">
-         <div class="container">
-            <div class="footer-content">
-               <div class="footer-links">
-                  <div class="footer-column">
-                     <h4>Product</h4>
-                     <a href="#features">Features</a>
-                     <a href="#download">Download</a>
-                  </div>
-                  <div class="footer-column">
-                     <h4>Community</h4>
-                     <a href="https://discord.gg/ffXw265Z7e" target="_blank">Discord</a>
-                     <a href="https://www.youtube.com/@Ardysa" target="_blank">YouTube</a>
-                  </div>
-                  <div class="footer-column">
-                     <h4>Support</h4>
-                     <a href="#support">Donate</a>
-                     <a href="#contact">Contact</a>
-                  </div>
-               </div>
-            </div>
-            <div class="footer-bottom">
-               <p>© 2025-2026 Ardysa. All rights reserved.</p>
-               <div class="footer-socials">
-                  <a href="https://discord.gg/ffXw265Z7e" aria-label="Discord"
-                     ><i class="fab fa-discord"></i
-                  ></a>
-                  <a href="https://www.youtube.com/@Ardysa" aria-label="YouTube"
-                     ><i class="fab fa-youtube"></i
-                  ></a>
-               </div>
-            </div>
-         </div>
-      </footer>
-
-      <script src="script.js?v=20260627d"></script>
+      <script src="script.js?v=20260704l"></script>
    </body>
 </html>

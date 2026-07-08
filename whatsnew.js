@@ -285,8 +285,29 @@ async function loadReleases() {
     }
 }
 
+// ── Back-to-top button ───────────────────────────────────────
+
+function initBackToTop() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+
+    const toggle = () => {
+        btn.classList.toggle('visible', window.pageYOffset > 400);
+    };
+
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    toggle();
+}
+
 // ── Boot ─────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', loadReleases);
+document.addEventListener('DOMContentLoaded', () => {
+    loadReleases();
+    initBackToTop();
+});
 
 // Handle hash changes (e.g. user clicks a shared link while page is already open)
 window.addEventListener('hashchange', scrollToHashTarget);

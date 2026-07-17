@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const updatesContainer = document.getElementById('updates-container');
     const updatesUrl = 'updates.json';
+
+    // Tabler sprite icon helper (sprite is inlined in the page <body>)
+    const upIcon = (name, style = '') =>
+        `<svg class="icon" aria-hidden="true"${style ? ` style="${style}"` : ''}><use href="#ti-${name}" /></svg>`;
     
     // State
     let allUpdates = [];
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching updates:', error);
             updatesContainer.innerHTML = `
                 <div class="update-card" style="grid-column: 1 / -1; padding: 40px; text-align: center;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #ff4444; margin-bottom: 16px;"></i>
+                    ${upIcon('alert-triangle', 'width: 2rem; height: 2rem; color: #ff4444; margin-bottom: 16px;')}
                     <p>Unable to load updates at this time.</p>
                 </div>
             `;
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const headerDateEl = document.getElementById('latest-update-date');
             if (headerDateEl) {
-                headerDateEl.innerHTML = `<i class="far fa-calendar-alt"></i> ${dateStr}`;
+                headerDateEl.innerHTML = `${upIcon('calendar')} ${dateStr}`;
             }
         }
     }
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (updates.length === 0) {
             updatesContainer.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
-                    <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
+                    ${upIcon('search', 'width: 2rem; height: 2rem; margin: 0 auto 15px; display: block;')}
                     <p>No updates found matching your criteria.</p>
                 </div>
             `;
@@ -83,13 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'update-card';
             
-            // Image handling with fallback
-            const imageHtml = update.image 
-                ? `<img src="${update.image}" alt="${update.hero} update" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-image\\'></i></div>'">`
-                : `<div class="placeholder-image"><i class="fas fa-image"></i></div>`;
+            // Image handling with fallback (single quotes so it can live
+            // inside the double-quoted data attribute below)
+            const placeholderHtml = "<div class='placeholder-image'><svg class='icon' aria-hidden='true'><use href='#ti-photo' /></svg></div>";
+            const imageHtml = update.image
+                ? `<img src="${update.image}" alt="${update.hero} update" loading="lazy" onerror="this.parentElement.innerHTML=this.parentElement.dataset.fallback">`
+                : placeholderHtml;
 
             card.innerHTML = `
-                <div class="update-image-container">
+                <div class="update-image-container" data-fallback="${placeholderHtml}">
                     ${imageHtml}
                 </div>
                 <div class="update-content">

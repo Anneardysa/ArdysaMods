@@ -26,16 +26,12 @@
       />
       <meta name="description" content="Full release history and changelogs for ArdysaModsTools." />
       <link rel="canonical" href="https://ardysamods.my.id/whatsnew" />
-      <link rel="stylesheet" href="style.css?v=20260704l" />
+      <link rel="stylesheet" href="style.css?v=20260717b" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
-         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
          rel="stylesheet"
-      />
-      <link
-         rel="stylesheet"
-         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       />
       <style>
          /* ─── What's New page-specific styles ─────────────── */
@@ -47,30 +43,16 @@
          }
 
          /* ── Release card ───────────────────────────────────── */
-         /* Matches the site's signature: sharp corners, clipped
-            top-right corner, monochrome tokens, left accent rail. */
+         /* Rounded dark card, monochrome tokens, left accent rail. */
 
          .release-card {
             background: #0a0a0a;
             border: 1px solid #2a2a2a;
+            border-radius: var(--radius, 14px);
+            overflow: hidden;
             margin-bottom: 20px;
             transition: var(--transition, all 0.2s ease);
             position: relative;
-         }
-
-         /* Signature clipped top-right corner (matches other cards) */
-         .release-card::after {
-            content: "";
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            width: var(--clip-size, 12px);
-            height: var(--clip-size, 12px);
-            background: #000;
-            border-left: 1px solid #2a2a2a;
-            border-bottom: 1px solid #2a2a2a;
-            transition: var(--transition, all 0.2s ease);
-            z-index: 2;
          }
 
          /* Left accent rail */
@@ -92,10 +74,6 @@
 
          .release-card:hover::before {
             background: #fff;
-         }
-
-         .release-card:hover::after {
-            border-color: #555;
          }
 
          /* ── Header ─────────────────────────────────────────── */
@@ -135,25 +113,27 @@
             color: var(--text-secondary, #888);
          }
 
-         .release-version i {
-            font-size: 0.8em;
+         .release-version .icon {
+            width: 0.8em;
+            height: 0.8em;
             color: var(--text-muted, #444);
             transition: var(--transition, all 0.2s ease);
          }
 
-         .release-version:hover i {
+         .release-version:hover .icon {
             color: var(--text-secondary, #888);
          }
 
-         /* Inverted high-contrast badge, sharp corners — matches primary btn */
+         /* Inverted high-contrast pill badge — matches primary btn */
          .latest-badge {
             background: var(--text-primary, #fff);
             color: var(--bg-primary, #000);
             font-size: 0.6rem;
             font-weight: 700;
-            padding: 4px 9px;
+            padding: 4px 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            border-radius: var(--radius-pill, 999px);
          }
 
          .release-date {
@@ -165,7 +145,7 @@
             font-variant-numeric: tabular-nums;
          }
 
-         .release-date i {
+         .release-date .icon {
             color: var(--text-muted, #444);
          }
 
@@ -180,6 +160,7 @@
          .copy-link-btn {
             background: none;
             border: 1px solid var(--border, #333);
+            border-radius: var(--radius-sm, 8px);
             color: var(--text-muted, #444);
             cursor: pointer;
             padding: 6px 9px;
@@ -347,7 +328,7 @@
             gap: 8px;
          }
 
-         .fallback-text i {
+         .fallback-text .icon {
             opacity: 0.5;
          }
 
@@ -359,14 +340,15 @@
             color: var(--text-secondary, rgba(255, 255, 255, 0.5));
          }
 
-         .no-releases i {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
+         .no-releases .icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 16px;
             display: block;
             opacity: 0.4;
          }
 
-         .no-releases.error i {
+         .no-releases.error .icon {
             color: #ff6b6b;
             opacity: 0.7;
          }
@@ -390,8 +372,7 @@
             padding: 40px;
          }
 
-         .loading-card .fa-spinner {
-            font-size: 2rem;
+         .loading-card .loader-spin {
             margin-bottom: 10px;
          }
 
@@ -492,6 +473,7 @@
             justify-content: center;
             background: #0a0a0a;
             border: 1px solid #2a2a2a;
+            border-radius: var(--radius-sm, 8px);
             color: #aaa;
             cursor: pointer;
             font-size: 0.95rem;
@@ -551,6 +533,26 @@
       </style>
    </head>
    <body>
+      <!-- ── Tabler icon sprite (MIT — tabler.io) ─────────────
+           Keep in sync with index.html / updates.html copies. -->
+      <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+         <symbol id="ti-download" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></symbol>
+         <symbol id="ti-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6" /></symbol>
+         <symbol id="ti-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></symbol>
+         <symbol id="ti-x" viewBox="0 0 24 24"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></symbol>
+         <symbol id="ti-menu-2" viewBox="0 0 24 24"><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></symbol>
+         <symbol id="ti-brand-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></symbol>
+         <symbol id="ti-brand-discord" viewBox="0 0 24 24"><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></symbol>
+         <symbol id="ti-brand-youtube" viewBox="0 0 24 24"><path d="M3 5m0 4a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /><path d="M10 9l5 3l-5 3z" /></symbol>
+         <symbol id="ti-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /></symbol>
+         <symbol id="ti-alert-triangle" viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.871l-8.106 -13.539a1.914 1.914 0 0 0 -3.274 .005z" /><path d="M12 16h.01" /></symbol>
+         <symbol id="ti-link" viewBox="0 0 24 24"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></symbol>
+         <symbol id="ti-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10" /></symbol>
+         <symbol id="ti-tag" viewBox="0 0 24 24"><path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" /></symbol>
+         <symbol id="ti-inbox" viewBox="0 0 24 24"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M4 13h3l3 3h4l3 -3h3" /></symbol>
+         <symbol id="ti-tool" viewBox="0 0 24 24"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></symbol>
+      </svg>
+
       <!-- Animated Background (Same as index.html) -->
       <div class="animated-bg">
          <div class="gradient-orb orb-1"></div>
@@ -581,7 +583,7 @@
                <li><a href="https://discord.gg/ffXw265Z7e" target="_blank">Discord</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation">
-               <i class="fas fa-bars"></i>
+               <svg class="icon" aria-hidden="true"><use href="#ti-menu-2" /></svg>
             </button>
          </div>
       </nav>
@@ -601,7 +603,7 @@
                <!-- Loading placeholder -->
                <div class="release-card loading-card">
                   <div class="release-body">
-                     <i class="fas fa-spinner fa-spin"></i>
+                     <span class="loader-spin"></span>
                      <p>Loading releases...</p>
                   </div>
                </div>
@@ -618,17 +620,17 @@
                   <a href="/">Home</a>
                   <a href="/#features">Features</a>
                   <a href="/#download">Download</a>
-                  <a href="/#support">Support</a>
+                  <a href="/#faq">FAQ</a>
                </div>
                <div class="footer-socials-big">
                   <a href="https://discord.gg/ffXw265Z7e" aria-label="Discord"
-                     ><i class="fab fa-discord"></i
+                     ><svg class="icon" aria-hidden="true"><use href="#ti-brand-discord" /></svg
                   ></a>
                   <a href="https://www.youtube.com/@Ardysa" aria-label="YouTube"
-                     ><i class="fab fa-youtube"></i
+                     ><svg class="icon" aria-hidden="true"><use href="#ti-brand-youtube" /></svg
                   ></a>
                   <a href="https://github.com/Anneardysa/ArdysaModsTools" aria-label="GitHub"
-                     ><i class="fab fa-github"></i
+                     ><svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg
                   ></a>
                </div>
                <p class="copyright">© 2025-2026 Ardysa. All rights reserved.</p>
@@ -638,10 +640,10 @@
 
       <!-- Back to top -->
       <button class="back-to-top" aria-label="Back to top" title="Back to top">
-         <i class="fas fa-arrow-up"></i>
+         <svg class="icon" aria-hidden="true"><use href="#ti-arrow-up" /></svg>
       </button>
 
-      <script src="script.js?v=20260704l"></script>
-      <script src="whatsnew.js?v=20260704l"></script>
+      <script src="script.js?v=20260717b"></script>
+      <script src="whatsnew.js?v=20260717b"></script>
    </body>
 </html>

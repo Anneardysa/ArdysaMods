@@ -8,6 +8,10 @@ const RELEASES_API =
 
 const EMPTY_BODY_FALLBACK = 'Bug Fixed';
 
+// Tabler sprite icon helper (sprite is inlined in the page <body>)
+const wnIcon = (name) =>
+    `<svg class="icon" aria-hidden="true"><use href="#ti-${name}" /></svg>`;
+
 // ── Lightweight Markdown → HTML ──────────────────────────────
 // Converts a subset of GitHub-flavoured Markdown to HTML.
 // Handles: headings, bold, italic, inline code, code blocks,
@@ -15,7 +19,7 @@ const EMPTY_BODY_FALLBACK = 'Bug Fixed';
 // ─────────────────────────────────────────────────────────────
 
 function markdownToHtml(md) {
-    if (!md || !md.trim()) return `<p class="fallback-text"><i class="fas fa-wrench"></i> ${EMPTY_BODY_FALLBACK}</p>`;
+    if (!md || !md.trim()) return `<p class="fallback-text">${wnIcon('tool')} ${EMPTY_BODY_FALLBACK}</p>`;
 
     let html = '';
     const lines = md.replace(/\r\n/g, '\n').split('\n');
@@ -170,14 +174,14 @@ function createReleaseCard(release) {
         <div class="release-header">
             <div class="release-title-row">
                 <a href="${githubUrl}" target="_blank" rel="noopener" class="release-version">
-                    <i class="fas fa-tag"></i> ${escapeHtml(tag)}
+                    ${wnIcon('tag')} ${escapeHtml(tag)}
                 </a>
                 ${isLatest ? '<span class="latest-badge">LATEST</span>' : ''}
             </div>
             <div class="release-meta">
-                <span class="release-date"><i class="far fa-calendar-alt"></i> ${date}</span>
+                <span class="release-date">${wnIcon('calendar')} ${date}</span>
                 <button class="copy-link-btn" data-link="${permalink}" title="Copy link to this release">
-                    <i class="fas fa-link"></i>
+                    ${wnIcon('link')}
                 </button>
             </div>
         </div>
@@ -197,10 +201,10 @@ function copyPermalink(btn) {
     const link = btn.getAttribute('data-link');
     navigator.clipboard.writeText(link).then(() => {
         btn.classList.add('copied');
-        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.innerHTML = wnIcon('check');
         setTimeout(() => {
             btn.classList.remove('copied');
-            btn.innerHTML = '<i class="fas fa-link"></i>';
+            btn.innerHTML = wnIcon('link');
         }, 2000);
     }).catch(() => {
         // Fallback for older browsers / non-HTTPS
@@ -213,10 +217,10 @@ function copyPermalink(btn) {
         document.execCommand('copy');
         document.body.removeChild(textarea);
         btn.classList.add('copied');
-        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.innerHTML = wnIcon('check');
         setTimeout(() => {
             btn.classList.remove('copied');
-            btn.innerHTML = '<i class="fas fa-link"></i>';
+            btn.innerHTML = wnIcon('link');
         }, 2000);
     });
 }
@@ -255,7 +259,7 @@ async function loadReleases() {
         if (!releases.length) {
             container.innerHTML = `
                 <div class="no-releases">
-                    <i class="fas fa-inbox"></i>
+                    ${wnIcon('inbox')}
                     <p>No releases found.</p>
                 </div>`;
             return;
@@ -278,7 +282,7 @@ async function loadReleases() {
         console.error('Failed to load releases:', error);
         container.innerHTML = `
             <div class="no-releases error">
-                <i class="fas fa-exclamation-triangle"></i>
+                ${wnIcon('alert-triangle')}
                 <p>Failed to load releases. Please try again later.</p>
                 <small>${escapeHtml(error.message)}</small>
             </div>`;

@@ -23,148 +23,579 @@
          content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
       />
       <link rel="canonical" href="https://ardysamods.my.id/" />
-      <link rel="stylesheet" href="style.css?v=20260704l" />
+      <link rel="stylesheet" href="style.css?v=20260717b" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
-         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
          rel="stylesheet"
-      />
-      <link
-         rel="stylesheet"
-         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       />
    </head>
-   <body class="landing">
-      <!-- Fullscreen cinematic backdrop -->
-      <div class="animated-bg"></div>
+   <body>
+      <!-- ── Tabler icon sprite (MIT — tabler.io) ─────────────
+           Keep in sync with whatsnew.html / updates.html copies. -->
+      <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+         <symbol id="ti-download" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></symbol>
+         <symbol id="ti-cloud-download" viewBox="0 0 24 24"><path d="M19 18a3.5 3.5 0 0 0 0 -7h-1a5 4.5 0 0 0 -11 -2a4.6 4.4 0 0 0 -2.1 8.4" /><path d="M12 13l0 9" /><path d="M9 19l3 3l3 -3" /></symbol>
+         <symbol id="ti-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6" /></symbol>
+         <symbol id="ti-arrow-right" viewBox="0 0 24 24"><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></symbol>
+         <symbol id="ti-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></symbol>
+         <symbol id="ti-arrow-up-right" viewBox="0 0 24 24"><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></symbol>
+         <symbol id="ti-external-link" viewBox="0 0 24 24"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4l5 0l0 5" /></symbol>
+         <symbol id="ti-x" viewBox="0 0 24 24"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></symbol>
+         <symbol id="ti-menu-2" viewBox="0 0 24 24"><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></symbol>
+         <symbol id="ti-bolt" viewBox="0 0 24 24"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></symbol>
+         <symbol id="ti-stack-2" viewBox="0 0 24 24"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></symbol>
+         <symbol id="ti-brand-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></symbol>
+         <symbol id="ti-brand-discord" viewBox="0 0 24 24"><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></symbol>
+         <symbol id="ti-brand-youtube" viewBox="0 0 24 24"><path d="M3 5m0 4a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /><path d="M10 9l5 3l-5 3z" /></symbol>
+         <symbol id="ti-code" viewBox="0 0 24 24"><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></symbol>
+         <symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></symbol>
+         <symbol id="ti-activity" viewBox="0 0 24 24"><path d="M3 12h4l3 8l4 -16l3 8h4" /></symbol>
+         <symbol id="ti-circle-check" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M9 12l2 2l4 -4" /></symbol>
+         <symbol id="ti-layout-grid" viewBox="0 0 24 24"><path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /></symbol>
+         <symbol id="ti-search" viewBox="0 0 24 24"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></symbol>
+         <symbol id="ti-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /></symbol>
+         <symbol id="ti-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></symbol>
+         <symbol id="ti-disc" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M7 12a5 5 0 0 1 5 -5" /><path d="M17 12a5 5 0 0 1 -5 5" /></symbol>
+         <symbol id="ti-rocket" viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /><path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /><path d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></symbol>
+         <symbol id="ti-wand" viewBox="0 0 24 24"><path d="M6 21l15 -15l-3 -3l-15 15l3 3" /><path d="M15 6l3 3" /><path d="M9 3a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 13a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /></symbol>
+         <symbol id="ti-adjustments" viewBox="0 0 24 24"><path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 6l8 0" /><path d="M16 6l4 0" /><path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 12l2 0" /><path d="M10 12l10 0" /><path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M4 18l11 0" /><path d="M19 18l1 0" /></symbol>
+         <symbol id="ti-photo" viewBox="0 0 24 24"><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></symbol>
+         <symbol id="ti-alert-triangle" viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.871l-8.106 -13.539a1.914 1.914 0 0 0 -3.274 .005z" /><path d="M12 16h.01" /></symbol>
+         <symbol id="ti-link" viewBox="0 0 24 24"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></symbol>
+         <symbol id="ti-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10" /></symbol>
+         <symbol id="ti-tag" viewBox="0 0 24 24"><path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" /></symbol>
+         <symbol id="ti-inbox" viewBox="0 0 24 24"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M4 13h3l3 3h4l3 -3h3" /></symbol>
+         <symbol id="ti-tool" viewBox="0 0 24 24"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></symbol>
+      </svg>
 
-      <!-- Randomly-spawned lightning streaks (decorative, JS-driven) -->
-      <div class="fx-lightning" aria-hidden="true"></div>
+      <!-- ── Site navigation ─────────────────────────────────── -->
+      <header class="site-nav" id="site-nav">
+         <div class="nav-inner container">
+            <a href="/" class="nav-brand">
+               <img
+                  src="https://cdn.ardysamods.my.id/image/ardysa.svg"
+                  alt="ArdysaModsTools logo"
+                  width="26"
+                  height="26"
+               />
+               <span>ArdysaModsTools</span>
+            </a>
+            <nav class="nav-links" id="nav-links">
+               <a href="#features">Features</a>
+               <a href="#modspack">ModsPack</a>
+               <a
+                  href="whatsnew"
+                  data-modal
+                  data-modal-title="What's New"
+                  data-modal-icon="ti-bolt"
+               >What's New</a>
+               <a href="#faq">FAQ</a>
+            </nav>
+            <div class="nav-actions">
+               <div class="lp-download" id="lp-download">
+                  <button
+                     class="lp-dl-toggle"
+                     id="dl-toggle"
+                     type="button"
+                     aria-haspopup="true"
+                     aria-expanded="false"
+                     aria-controls="dl-menu"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>
+                     <span>Download</span>
+                     <svg class="icon lp-dl-caret" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                  </button>
+                  <div class="lp-dl-menu" id="dl-menu" role="menu">
+                     <div class="lp-dl-menu-head">
+                        <span class="lp-dl-head-label">
+                           <svg class="icon" aria-hidden="true"><use href="#ti-rocket" /></svg>
+                           Latest Build
+                        </span>
+                        <span class="lp-dl-ver" id="version-text">Loading…</span>
+                     </div>
+                     <div class="lp-dl-list">
+                        <a
+                           id="download-installer"
+                           class="lp-dl-item lp-dl-item--rec"
+                           href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                           target="_blank"
+                           rel="noopener"
+                           role="menuitem"
+                           data-dl="installer"
+                        >
+                           <span class="lp-dl-ic"><svg class="icon" aria-hidden="true"><use href="#ti-disc" /></svg></span>
+                           <span class="lp-dl-info">
+                              <span class="lp-dl-titlerow">
+                                 <strong>Installer</strong>
+                                 <span class="lp-dl-badge">Recommended</span>
+                              </span>
+                              <small>Guided setup &amp; automatic updates</small>
+                              <span class="lp-dl-size"><span id="installer-size" class="download-size" data-dl-size="installer"></span></span>
+                           </span>
+                           <span class="lp-dl-go" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#ti-arrow-right" /></svg></span>
+                        </a>
+                        <a
+                           id="download-portable"
+                           class="lp-dl-item"
+                           href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                           target="_blank"
+                           rel="noopener"
+                           role="menuitem"
+                           data-dl="portable"
+                        >
+                           <span class="lp-dl-ic"><svg class="icon" aria-hidden="true"><use href="#ti-box" /></svg></span>
+                           <span class="lp-dl-info">
+                              <span class="lp-dl-titlerow">
+                                 <strong>Portable</strong>
+                              </span>
+                              <small>No install — run from anywhere</small>
+                              <span class="lp-dl-size"><span id="portable-size" class="download-size" data-dl-size="portable"></span></span>
+                           </span>
+                           <span class="lp-dl-go" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#ti-arrow-right" /></svg></span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <button class="nav-toggle" aria-label="Toggle navigation">
+                  <svg class="icon" aria-hidden="true"><use href="#ti-menu-2" /></svg>
+               </button>
+            </div>
+         </div>
+      </header>
 
-      <!-- Accessible page title for SEO / screen readers -->
-      <h1 class="sr-only">ArdysaModsTools — The Ultimate Dota 2 Mod Manager</h1>
+      <main>
+         <!-- ── Hero ─────────────────────────────────────────── -->
+         <section class="hero" id="hero">
+            <div class="container hero-grid">
+               <div class="hero-copy">
+                  <div class="hero-badges">
+                     <a class="badge badge-glow" href="#download">
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        <span data-version>v—</span>&nbsp;available
+                     </a>
+                     <a
+                        class="badge"
+                        href="https://github.com/Anneardysa/ArdysaModsTools"
+                        target="_blank"
+                        rel="noopener"
+                     >
+                        <svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>
+                        Open source
+                        <svg class="icon" aria-hidden="true"><use href="#ti-arrow-up-right" /></svg>
+                     </a>
+                  </div>
+                  <h1 class="hero-title">
+                     Mod Dota 2.<br /><span class="text-dim">Your way.</span>
+                  </h1>
+                  <p class="hero-sub">
+                     Install, manage, and organize Dota 2 cosmetic mods with a
+                     sleek one-click desktop app — backed by an always-updated
+                     ModsPack. Free forever.
+                  </p>
+                  <div class="hero-actions">
+                     <a class="btn btn-pill btn-white btn-shine" href="#download">
+                        Go to Downloads
+                        <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-right" /></svg>
+                     </a>
+                     <a
+                        class="btn btn-pill btn-dark"
+                        href="updates"
+                        data-modal
+                        data-modal-title="ModsPack"
+                        data-modal-icon="ti-stack-2"
+                     >
+                        <svg class="icon" aria-hidden="true"><use href="#ti-stack-2" /></svg>
+                        View ModsPack
+                     </a>
+                     <span class="hero-socials">
+                        <a
+                           class="btn btn-square"
+                           href="https://github.com/Anneardysa/ArdysaModsTools"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="GitHub"
+                        >
+                           <svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>
+                        </a>
+                        <a
+                           class="btn btn-square"
+                           href="https://discord.gg/ffXw265Z7e"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="Discord"
+                        >
+                           <svg class="icon" aria-hidden="true"><use href="#ti-brand-discord" /></svg>
+                        </a>
+                     </span>
+                  </div>
+                  <ul class="hero-stats">
+                     <li>
+                        <strong data-stat="downloads">—</strong>
+                        <span>Downloads</span>
+                     </li>
+                     <li>
+                        <strong data-stat="heroes">—</strong>
+                        <span>Hero Mods</span>
+                     </li>
+                     <li>
+                        <strong>100%</strong>
+                        <span>Free</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="hero-visual" aria-hidden="true">
+                  <div class="hero-carousel" id="hero-carousel">
+                     <div class="hero-carousel-track">
+                        <video class="hero-slide" src="assets/video/preview-1.webm" autoplay muted loop playsinline></video>
+                        <video class="hero-slide" src="assets/video/preview-2.webm" autoplay muted loop playsinline></video>
+                        <video class="hero-slide" src="assets/video/preview-3.webm" autoplay muted loop playsinline></video>
+                     </div>
+                     <div class="hero-carousel-dots">
+                        <button data-slide="0" class="is-active" tabindex="-1"></button>
+                        <button data-slide="1" tabindex="-1"></button>
+                        <button data-slide="2" tabindex="-1"></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
 
-      <main class="landing-shell">
-         <!-- ── Top-left: Logo ─────────────────────────────── -->
-         <a href="/" class="lp-logo logo">
-            <img
-               src="https://cdn.ardysamods.my.id/image/ardysa.svg"
-               alt="ArdysaModsTools logo"
-               class="lp-logo-mark"
-               width="26"
-               height="26"
-            />
-            <span>ArdysaModsTools</span>
-         </a>
+         <!-- ── Features ─────────────────────────────────────── -->
+         <section class="section features" id="features">
+            <div class="container">
+               <header class="section-head reveal">
+                  <h2 class="grad-text">Everything you need,<br />in a single app</h2>
+                  <p>
+                     ArdysaModsTools handles the whole modding workflow — from
+                     installing skins to keeping them updated — in one free,
+                     easy-to-use desktop app.
+                  </p>
+               </header>
+               <!-- TODO: validate tab copy against actual app features -->
+               <div class="feature-tabs reveal" role="tablist" aria-label="App features">
+                  <button class="feature-tab is-active" role="tab" aria-selected="true" data-tab="0">
+                     <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-wand" /></svg></span>
+                     <span>
+                        <strong>One-Click Install</strong>
+                        <span>Apply the full ModsPack in a single click</span>
+                     </span>
+                  </button>
+                  <button class="feature-tab" role="tab" aria-selected="false" data-tab="1">
+                     <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-adjustments" /></svg></span>
+                     <span>
+                        <strong>Mod Manager</strong>
+                        <span>Pick skins per hero — mix &amp; match freely</span>
+                     </span>
+                  </button>
+                  <button class="feature-tab" role="tab" aria-selected="false" data-tab="2">
+                     <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-refresh" /></svg></span>
+                     <span>
+                        <strong>Auto Updates</strong>
+                        <span>Stay in sync after every Dota 2 patch</span>
+                     </span>
+                  </button>
+               </div>
+               <div class="preview-frame reveal">
+                  <div class="preview-bar">
+                     <span class="win-dot win-dot--r"></span>
+                     <span class="win-dot win-dot--y"></span>
+                     <span class="win-dot win-dot--g"></span>
+                     <span class="preview-label">PREVIEW</span>
+                     <div class="preview-dots" aria-hidden="true">
+                        <button data-tab="0" class="is-active" tabindex="-1"></button>
+                        <button data-tab="1" tabindex="-1"></button>
+                        <button data-tab="2" tabindex="-1"></button>
+                     </div>
+                  </div>
+                  <div class="preview-body">
+                     <img class="preview-img is-active" src="assets/app_1.jpg" alt="ArdysaModsTools — one-click install" loading="lazy" />
+                     <img class="preview-img" src="assets/app_2.jpg" alt="ArdysaModsTools — mod manager" loading="lazy" />
+                     <img class="preview-img" src="assets/app_3.jpg" alt="ArdysaModsTools — auto updates" loading="lazy" />
+                  </div>
+               </div>
+            </div>
+         </section>
 
-         <!-- ── Top-right: What's New link + Download App ────── -->
-         <div class="lp-nav">
-            <a
-               href="whatsnew"
-               class="lp-nav-link"
-               data-modal
-               data-modal-title="What's New"
-               data-modal-icon="fa-bolt"
-            >What's New</a>
-            <div class="lp-download" id="lp-download">
-            <button
-               class="lp-dl-toggle"
-               id="dl-toggle"
-               type="button"
-               aria-haspopup="true"
-               aria-expanded="false"
-               aria-controls="dl-menu"
-            >
-               <i class="fas fa-download"></i>
-               <span>Download App</span>
-               <i class="fas fa-chevron-down lp-dl-caret"></i>
-            </button>
-            <div class="lp-dl-menu" id="dl-menu" role="menu">
-               <div class="lp-dl-menu-head">
-                  <span class="lp-dl-head-label">
-                     <i class="fas fa-rocket"></i> Latest Build
+         <!-- ── ModsPack showcase ────────────────────────────── -->
+         <section class="section modspack" id="modspack">
+            <div class="container">
+               <header class="section-head reveal">
+                  <h2 class="grad-text">One ModsPack,<br />every hero covered</h2>
+                  <p>
+                     Curated skins for the whole hero pool, refreshed regularly.
+                     Latest update: <span data-modspack-date>—</span>
+                  </p>
+               </header>
+               <div class="modspack-grid reveal" id="modspack-grid">
+                  <!-- Tiles rendered by script.js from updates.json -->
+               </div>
+               <div class="modspack-actions reveal">
+                  <a
+                     class="btn btn-pill btn-white btn-shine"
+                     href="updates"
+                     data-modal
+                     data-modal-title="ModsPack"
+                     data-modal-icon="ti-stack-2"
+                  >
+                     Browse all heroes
+                     <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-right" /></svg>
+                  </a>
+               </div>
+            </div>
+         </section>
+
+         <!-- ── Trust / built in the open ────────────────────── -->
+         <section class="section trust" id="how-it-works">
+            <div class="container trust-grid">
+               <div class="trust-copy reveal">
+                  <h2 class="grad-text">Built in the open</h2>
+                  <!-- TODO: validate copy -->
+                  <p>
+                     No hidden magic — a desktop tool that mods your Dota 2
+                     cosmetics locally, and puts everything back the way it was
+                     whenever you want.
+                  </p>
+                  <ul class="trust-list">
+                     <li>
+                        <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-code" /></svg></span>
+                        <span>
+                           <strong>Source on GitHub</strong>
+                           <span>The app and every release are public on GitHub — fork it, audit it, build on it.</span>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-refresh" /></svg></span>
+                        <span>
+                           <strong>Fully reversible</strong>
+                           <span>Disable mods or restore Dota 2's default skins anytime, right from the app.</span>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-activity" /></svg></span>
+                        <span>
+                           <strong>Actively maintained</strong>
+                           <span>Frequent ModsPack refreshes and app updates, driven by the community.</span>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="terminal reveal" aria-hidden="true">
+                  <div class="terminal-bar">
+                     <span class="win-dot win-dot--r"></span>
+                     <span class="win-dot win-dot--y"></span>
+                     <span class="win-dot win-dot--g"></span>
+                     <span class="terminal-tab">ardysa-mods.log</span>
+                     <span class="terminal-live">live</span>
+                  </div>
+                  <pre class="terminal-body"><code><span class="t-cmd">$ amt --status</span>
+<span class="t-ok">✓ Dota 2 installation detected</span>
+<span class="t-ok">✓ ModsPack applied</span>
+<span class="t-ok">✓ 121 hero skins active</span>
+<span class="t-cmd">$ amt --check-updates</span>
+<span class="t-ok">✓ You're on the latest version</span></code></pre>
+                  <span class="terminal-badge">
+                     <svg class="icon" aria-hidden="true"><use href="#ti-circle-check" /></svg>
+                     UP TO DATE
                   </span>
-                  <span class="lp-dl-ver" id="version-text">Loading…</span>
                </div>
-               <div class="lp-dl-list">
+            </div>
+         </section>
+
+         <!-- ── FAQ ──────────────────────────────────────────── -->
+         <section class="section faq" id="faq">
+            <div class="container">
+               <header class="section-head reveal">
+                  <h2 class="grad-text">Common questions</h2>
+                  <p>Everything you need to know before getting started.</p>
+               </header>
+               <!-- TODO: validate FAQ answers -->
+               <div class="faq-list reveal">
+                  <details class="faq-item">
+                     <summary>
+                        Is ArdysaModsTools free?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        Yes — the app and the ModsPack are completely free.
+                        Download the installer or the portable build and you're
+                        good to go. No sign-up, no paywalls.
+                     </div>
+                  </details>
+                  <details class="faq-item">
+                     <summary>
+                        How do I install mods?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        Download and run ArdysaModsTools, let it detect your
+                        Dota 2 installation, then apply the ModsPack or pick
+                        skins per hero — the app handles the rest in one click.
+                     </div>
+                  </details>
+                  <details class="faq-item">
+                     <summary>
+                        Do mods still work after a Dota 2 update?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        Game patches can reset modded files. When that happens,
+                        just re-apply your mods from the app — and keep an eye
+                        on <a href="whatsnew" data-modal data-modal-title="What's New" data-modal-icon="ti-bolt">What's New</a>
+                        for updated ModsPack releases.
+                     </div>
+                  </details>
+                  <details class="faq-item">
+                     <summary>
+                        How do I uninstall or restore default skins?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        The app can disable mods or restore Dota 2's original
+                        files at any time — no manual file digging required.
+                     </div>
+                  </details>
+                  <details class="faq-item">
+                     <summary>
+                        Are the mods visual only?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        Yes. These are client-side cosmetic changes — only you
+                        see them, and gameplay is not affected.
+                     </div>
+                  </details>
+                  <details class="faq-item">
+                     <summary>
+                        Where can I get help?
+                        <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                     </summary>
+                     <div class="faq-body">
+                        The community lives on
+                        <a href="https://discord.gg/ffXw265Z7e" target="_blank" rel="noopener">Discord</a>
+                        — support, mod showcases, and ModsPack news all land
+                        there first.
+                     </div>
+                  </details>
+               </div>
+               <div class="faq-actions reveal">
                   <a
-                     id="download-installer"
-                     class="lp-dl-item lp-dl-item--rec"
-                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     class="btn btn-ghost"
+                     href="https://discord.gg/ffXw265Z7e"
                      target="_blank"
                      rel="noopener"
-                     role="menuitem"
                   >
-                     <span class="lp-dl-ic"><i class="fas fa-compact-disc"></i></span>
-                     <span class="lp-dl-info">
-                        <span class="lp-dl-titlerow">
-                           <strong>Installer</strong>
-                           <span class="lp-dl-badge">Recommended</span>
-                        </span>
-                        <small>Guided setup &amp; automatic updates</small>
-                        <span class="lp-dl-size"><i class="fas fa-hard-drive"></i><span id="installer-size" class="download-size"></span></span>
-                     </span>
-                     <span class="lp-dl-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                  </a>
-                  <a
-                     id="download-portable"
-                     class="lp-dl-item"
-                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
-                     target="_blank"
-                     rel="noopener"
-                     role="menuitem"
-                  >
-                     <span class="lp-dl-ic"><i class="fas fa-folder-open"></i></span>
-                     <span class="lp-dl-info">
-                        <span class="lp-dl-titlerow">
-                           <strong>Portable</strong>
-                        </span>
-                        <small>No install — run from anywhere</small>
-                        <span class="lp-dl-size"><i class="fas fa-hard-drive"></i><span id="portable-size" class="download-size"></span></span>
-                     </span>
-                     <span class="lp-dl-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                     More questions? Ask on Discord
+                     <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-up-right" /></svg>
                   </a>
                </div>
             </div>
+         </section>
+
+         <!-- ── Download CTA ─────────────────────────────────── -->
+         <section class="section cta" id="download">
+            <div class="container">
+               <h2 class="grad-text reveal">Ready to mod your Dota 2?</h2>
+               <p class="reveal">
+                  Download ArdysaModsTools and get started within minutes.
+                  No sign-up required.
+               </p>
+               <div class="cta-buttons reveal">
+                  <a
+                     class="btn btn-pill btn-white btn-shine"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     data-dl="installer"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>
+                     Download Installer
+                     <span class="dl-size" data-dl-size="installer"></span>
+                  </a>
+                  <a
+                     class="btn btn-pill btn-dark"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     data-dl="portable"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-box" /></svg>
+                     Portable (.zip)
+                     <span class="dl-size" data-dl-size="portable"></span>
+                  </a>
+               </div>
+               <div class="spec-cards reveal">
+                  <div class="spec-card">
+                     <span>Platform</span>
+                     <strong>Windows 10 / 11</strong>
+                  </div>
+                  <div class="spec-card">
+                     <span>Version</span>
+                     <strong data-version>—</strong>
+                  </div>
+                  <div class="spec-card">
+                     <span>Price</span>
+                     <strong>Free</strong>
+                  </div>
+               </div>
             </div>
-         </div>
-
-         <!-- ── Bottom-left: Tagline + View ModsPack ────────── -->
-         <div class="lp-intro">
-            <p class="lp-tagline">
-               The ultimate Dota 2 mod manager — install, manage, and organize your
-               cosmetic mods with a sleek, one-click interface.
-            </p>
-            <a
-               href="updates"
-               class="lp-link"
-               data-modal
-               data-modal-title="ModsPack"
-               data-modal-icon="fa-layer-group"
-            >
-               View ModsPack <i class="fas fa-arrow-right"></i>
-            </a>
-         </div>
-
-         <!-- ── Bottom-right: Community / Discord ───────────── -->
-         <div class="lp-community">
-            <span class="lp-community-label">AMT Community</span>
-            <p class="lp-community-text">
-               Get support, mod showcases, and the latest ModsPack updates
-               straight from the community.
-            </p>
-            <a
-               href="https://discord.gg/ffXw265Z7e"
-               class="lp-discord"
-               target="_blank"
-               rel="noopener"
-            >
-               <i class="fab fa-discord"></i>
-               <span>Join the Discord</span>
-            </a>
-         </div>
+         </section>
       </main>
+
+      <!-- ── Footer ───────────────────────────────────────────── -->
+      <footer class="site-footer">
+         <div class="container footer-grid">
+            <div class="footer-brand">
+               <a href="/" class="nav-brand">
+                  <img
+                     src="https://cdn.ardysamods.my.id/image/ardysa.svg"
+                     alt="ArdysaModsTools logo"
+                     width="26"
+                     height="26"
+                  />
+                  <span>ArdysaModsTools</span>
+               </a>
+               <p>
+                  A free desktop app for modding Dota 2 cosmetics — install,
+                  manage, and organize hero skins with one click.
+               </p>
+               <div class="footer-socials">
+                  <a class="btn btn-square" href="https://discord.gg/ffXw265Z7e" target="_blank" rel="noopener" aria-label="Discord">
+                     <svg class="icon" aria-hidden="true"><use href="#ti-brand-discord" /></svg>
+                  </a>
+                  <a class="btn btn-square" href="https://www.youtube.com/@Ardysa" target="_blank" rel="noopener" aria-label="YouTube">
+                     <svg class="icon" aria-hidden="true"><use href="#ti-brand-youtube" /></svg>
+                  </a>
+                  <a class="btn btn-square" href="https://github.com/Anneardysa/ArdysaModsTools" target="_blank" rel="noopener" aria-label="GitHub">
+                     <svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>
+                  </a>
+               </div>
+            </div>
+            <nav class="footer-col" aria-label="Product">
+               <h4>Product</h4>
+               <a href="#features"><svg class="icon" aria-hidden="true"><use href="#ti-layout-grid" /></svg>Features</a>
+               <a href="updates" data-modal data-modal-title="ModsPack" data-modal-icon="ti-stack-2"><svg class="icon" aria-hidden="true"><use href="#ti-stack-2" /></svg>ModsPack</a>
+               <a href="whatsnew" data-modal data-modal-title="What's New" data-modal-icon="ti-bolt"><svg class="icon" aria-hidden="true"><use href="#ti-bolt" /></svg>What's New</a>
+               <a href="#download"><svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>Download</a>
+            </nav>
+            <nav class="footer-col" aria-label="Community">
+               <h4>Community</h4>
+               <a href="https://discord.gg/ffXw265Z7e" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-discord" /></svg>Discord</a>
+               <a href="https://www.youtube.com/@Ardysa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-youtube" /></svg>YouTube</a>
+               <a href="https://github.com/Anneardysa/ArdysaModsTools" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>GitHub</a>
+            </nav>
+            <nav class="footer-col" aria-label="Resources">
+               <h4>Resources</h4>
+               <a href="https://github.com/Anneardysa/ArdysaModsTools/releases" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-tag" /></svg>Releases</a>
+               <a href="https://github.com/Anneardysa/ArdysaModsTools/issues" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-alert-triangle" /></svg>Report an issue</a>
+            </nav>
+         </div>
+         <div class="footer-bottom container">
+            <span>© 2025-2026 Ardysa — All rights reserved</span>
+            <span>Dota 2 is a trademark of Valve Corporation. Not affiliated with Valve.</span>
+         </div>
+      </footer>
 
       <!-- ── Modal: embeds What's New / ModsPack pages ──────── -->
       <div class="lp-modal" id="lp-modal" aria-hidden="true">
@@ -177,7 +608,7 @@
          >
             <header class="lp-modal__bar">
                <span class="lp-modal__title" id="lp-modal-title">
-                  <i class="fas fa-layer-group" id="lp-modal-icon"></i>
+                  <svg class="icon" id="lp-modal-icon" aria-hidden="true"><use href="#ti-stack-2" /></svg>
                   <span id="lp-modal-titletext">ModsPack</span>
                </span>
                <div class="lp-modal__actions">
@@ -190,7 +621,7 @@
                      title="Open full page"
                      aria-label="Open full page"
                   >
-                     <i class="fas fa-up-right-from-square"></i>
+                     <svg class="icon" aria-hidden="true"><use href="#ti-external-link" /></svg>
                   </a>
                   <button
                      class="lp-modal__btn lp-modal__close"
@@ -198,7 +629,7 @@
                      data-close
                      aria-label="Close"
                   >
-                     <i class="fas fa-xmark"></i>
+                     <svg class="icon" aria-hidden="true"><use href="#ti-x" /></svg>
                   </button>
                </div>
             </header>
@@ -216,6 +647,6 @@
          </div>
       </div>
 
-      <script src="script.js?v=20260704l"></script>
+      <script src="script.js?v=20260717b"></script>
    </body>
 </html>

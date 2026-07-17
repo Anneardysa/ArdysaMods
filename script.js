@@ -204,18 +204,46 @@ if (terminalPre && !prefersReducedMotion && 'IntersectionObserver' in window) {
 
     if (lines.length) {
         const texts = lines.map((line) => line.textContent);
+        let caret;
+
+        const eraseAll = (onDone) => {
+            // Backspace from the last line to the first, like a real caret deleting text
+            let li = lines.length - 1;
+            const eraseLine = () => {
+                if (li < 0) { onDone(); return; }
+                const line = lines[li];
+                if (line.nextSibling && line.nextSibling.nodeType === Node.TEXT_NODE) {
+                    code.removeChild(line.nextSibling); // the trailing "\n"
+                }
+                const backspace = () => {
+                    if (line.textContent.length > 0) {
+                        line.textContent = line.textContent.slice(0, -1);
+                        setTimeout(backspace, 14 + Math.random() * 18);
+                    } else {
+                        li--;
+                        setTimeout(eraseLine, 90);
+                    }
+                };
+                backspace();
+            };
+            eraseLine();
+        };
 
         const runTyping = () => {
             // Freeze the height so the terminal doesn't grow while typing
             terminalPre.style.minHeight = terminalPre.offsetHeight + 'px';
             code.textContent = '';
-            const caret = document.createElement('span');
+            caret = document.createElement('span');
             caret.className = 't-caret';
             code.appendChild(caret);
 
             let li = 0;
             const nextLine = () => {
-                if (li >= lines.length) return; // done — leave the caret blinking
+                if (li >= lines.length) {
+                    // Full loop: hold, erase everything, then type it all again
+                    setTimeout(() => eraseAll(() => setTimeout(runTyping, 500)), 1700);
+                    return;
+                }
                 const line = lines[li];
                 const text = texts[li];
                 line.textContent = '';

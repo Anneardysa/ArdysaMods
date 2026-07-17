@@ -23,7 +23,7 @@
          content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
       />
       <link rel="canonical" href="https://ardysamods.my.id/" />
-      <link rel="stylesheet" href="style.css?v=20260717b" />
+      <link rel="stylesheet" href="style.css?v=20260717d" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
@@ -168,6 +168,7 @@
       <main>
          <!-- ── Hero ─────────────────────────────────────────── -->
          <section class="hero" id="hero">
+            <div class="hero-backdrop" aria-hidden="true"></div>
             <div class="container hero-grid">
                <div class="hero-copy">
                   <div class="hero-badges">
@@ -187,7 +188,7 @@
                      </a>
                   </div>
                   <h1 class="hero-title">
-                     Mod Dota 2.<br /><span class="text-dim">Your way.</span>
+                     Dota 2 Mod<br /><span class="text-dim">Manager.</span>
                   </h1>
                   <p class="hero-sub">
                      Install, manage, and organize Dota 2 cosmetic mods with a
@@ -247,15 +248,23 @@
                </div>
                <div class="hero-visual" aria-hidden="true">
                   <div class="hero-carousel" id="hero-carousel">
-                     <div class="hero-carousel-track">
-                        <video class="hero-slide" src="assets/video/preview-1.webm" autoplay muted loop playsinline></video>
-                        <video class="hero-slide" src="assets/video/preview-2.webm" autoplay muted loop playsinline></video>
-                        <video class="hero-slide" src="assets/video/preview-3.webm" autoplay muted loop playsinline></video>
+                     <div class="hero-window-bar">
+                        <span class="win-dot win-dot--r"></span>
+                        <span class="win-dot win-dot--y"></span>
+                        <span class="win-dot win-dot--g"></span>
+                        <span class="hero-window-title">ArdysaModsTools — preview</span>
                      </div>
-                     <div class="hero-carousel-dots">
-                        <button data-slide="0" class="is-active" tabindex="-1"></button>
-                        <button data-slide="1" tabindex="-1"></button>
-                        <button data-slide="2" tabindex="-1"></button>
+                     <div class="hero-carousel-viewport">
+                        <div class="hero-carousel-track">
+                           <video class="hero-slide" src="assets/video/preview-1.webm" autoplay muted loop playsinline></video>
+                           <video class="hero-slide" src="assets/video/preview-2.webm" autoplay muted loop playsinline></video>
+                           <video class="hero-slide" src="assets/video/preview-3.webm" autoplay muted loop playsinline></video>
+                        </div>
+                        <div class="hero-carousel-dots">
+                           <button data-slide="0" class="is-active" tabindex="-1"></button>
+                           <button data-slide="1" tabindex="-1"></button>
+                           <button data-slide="2" tabindex="-1"></button>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -264,6 +273,7 @@
 
          <!-- ── Features ─────────────────────────────────────── -->
          <section class="section features" id="features">
+            <div class="features-backdrop" aria-hidden="true"></div>
             <div class="container">
                <header class="section-head reveal">
                   <h2 class="grad-text">Everything you need,<br />in a single app</h2>
@@ -647,6 +657,6 @@
          </div>
       </div>
 
-      <script src="script.js?v=20260717b"></script>
+      <script src="script.js?v=20260717c"></script>
    </body>
 </html>

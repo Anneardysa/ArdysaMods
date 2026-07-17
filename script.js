@@ -79,33 +79,6 @@ if (revealEls.length) {
 }
 
 // ========================================
-// Landing page — Download dropdown (Installer / Portable)
-// ========================================
-const dlWrap = document.getElementById('lp-download');
-const dlToggle = document.getElementById('dl-toggle');
-
-if (dlWrap && dlToggle) {
-    const closeMenu = () => {
-        dlWrap.classList.remove('open');
-        dlToggle.setAttribute('aria-expanded', 'false');
-    };
-
-    dlToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = dlWrap.classList.toggle('open');
-        dlToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Close when clicking outside or pressing Escape
-    document.addEventListener('click', (e) => {
-        if (!dlWrap.contains(e.target)) closeMenu();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
-}
-
-// ========================================
 // Landing page — feature tabs (screenshot preview switcher)
 // ========================================
 const featureTabs = document.querySelectorAll('.feature-tab');
@@ -378,13 +351,55 @@ if (modal) {
 // One request powers every [data-version] / [data-dl] / [data-dl-size]
 // element on the page, plus the hero downloads counter.
 // ========================================
+function renderReleaseHistory(releases, latest, container) {
+    const rows = releases
+        .filter(r => r !== latest && !r.draft)
+        .map(r => ({ release: r, zip: (r.assets || []).find(a => a.name.endsWith('.zip')) }))
+        .filter(r => r.zip)
+        .slice(0, 10);
+
+    if (!rows.length) {
+        container.textContent = '';
+        return;
+    }
+
+    container.textContent = '';
+    rows.forEach(({ release, zip }) => {
+        const row = document.createElement('div');
+        row.className = 'dl-history-row';
+
+        const meta = document.createElement('div');
+        meta.className = 'dl-history-meta';
+        const version = document.createElement('strong');
+        version.textContent = release.tag_name || '';
+        const details = document.createElement('span');
+        const date = release.published_at
+            ? new Date(release.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+            : '';
+        const sizeMB = (zip.size / (1024 * 1024)).toFixed(1);
+        details.textContent = date ? `${date} · ${sizeMB} MB` : `${sizeMB} MB`;
+        meta.append(version, details);
+
+        const btn = document.createElement('a');
+        btn.className = 'btn btn-dark dl-history-btn';
+        btn.href = zip.browser_download_url;
+        btn.target = '_blank';
+        btn.rel = 'noopener';
+        btn.innerHTML = tIcon('download') + '<span>Portable .zip</span>';
+
+        row.append(meta, btn);
+        container.appendChild(row);
+    });
+}
+
 async function fetchReleaseInfo() {
-    const versionEls = document.querySelectorAll('[data-version], #version-text');
+    const versionEls = document.querySelectorAll('[data-version]');
     const dlLinks = document.querySelectorAll('[data-dl]');
     const statDownloads = document.querySelector('[data-stat="downloads"]');
+    const historyEl = document.getElementById('release-history');
 
     // Nothing to populate on this page — bail early.
-    if (!versionEls.length && !dlLinks.length && !statDownloads) return;
+    if (!versionEls.length && !dlLinks.length && !statDownloads && !historyEl) return;
 
     const formatCount = (n) => {
         if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
@@ -403,9 +418,7 @@ async function fetchReleaseInfo() {
         const version = latest.tag_name || '';
 
         versionEls.forEach((el) => {
-            el.textContent = el.id === 'version-text'
-                ? `Version ${version.replace(/^v/, '')}`
-                : version;
+            el.textContent = version;
         });
 
         const assets = latest.assets || [];
@@ -433,13 +446,25 @@ async function fetchReleaseInfo() {
             statDownloads.textContent = total > 0 ? formatCount(total) : '10K+';
         }
 
+        if (historyEl) renderReleaseHistory(releases, latest, historyEl);
+
         console.log(`✅ Loaded release: ${version}`);
     } catch (error) {
         console.warn('⚠️ Could not fetch releases, using fallbacks:', error.message);
         versionEls.forEach((el) => {
-            el.textContent = el.id === 'version-text' ? 'Latest version' : 'Latest';
+            el.textContent = 'Latest';
         });
         if (statDownloads) statDownloads.textContent = '10K+';
+        if (historyEl) {
+            historyEl.innerHTML = '';
+            const link = document.createElement('a');
+            link.className = 'btn btn-dark';
+            link.href = 'https://github.com/Anneardysa/ArdysaModsTools/releases';
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = 'Browse all releases on GitHub';
+            historyEl.appendChild(link);
+        }
         // [data-dl] links keep their static releases/latest hrefs
     }
 }

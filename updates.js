@@ -33,9 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             updatesContainer.innerHTML = `
                 <div class="update-card" style="grid-column: 1 / -1; padding: 40px; text-align: center;">
                     ${upIcon('alert-triangle', 'width: 2rem; height: 2rem; color: #ff4444; margin-bottom: 16px;')}
-                    <p>Unable to load updates at this time.</p>
+                    <p data-i18n="updates.errorLoad">Unable to load updates at this time.</p>
                 </div>
             `;
+            window.i18n?.apply?.(updatesContainer);
         }
     }
 
@@ -43,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (updates.length > 0) {
             const maxDate = updates.reduce((max, p) => p.date > max ? p.date : max, updates[0].date);
             const dateObj = new Date(maxDate);
-            const dateStr = dateObj.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric' 
+            const dateStr = dateObj.toLocaleDateString(window.i18n?.localeFor?.() || 'en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
             });
             
             const headerDateEl = document.getElementById('latest-update-date');
@@ -77,32 +78,51 @@ document.addEventListener('DOMContentLoaded', () => {
             updatesContainer.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
                     ${upIcon('search', 'width: 2rem; height: 2rem; margin: 0 auto 15px; display: block;')}
-                    <p>No updates found matching your criteria.</p>
+                    <p data-i18n="updates.noResults">No updates found matching your criteria.</p>
                 </div>
             `;
+            window.i18n?.apply?.(updatesContainer);
             return;
         }
+
+        // Placeholder shown when an image is missing or fails to load.
+        const makePlaceholder = () => {
+            const ph = document.createElement('div');
+            ph.className = 'placeholder-image';
+            ph.innerHTML = "<svg class='icon' aria-hidden='true'><use href='#ti-photo' /></svg>";
+            return ph;
+        };
 
         updates.forEach(update => {
             const card = document.createElement('div');
             card.className = 'update-card';
-            
-            // Image handling with fallback (single quotes so it can live
-            // inside the double-quoted data attribute below)
-            const placeholderHtml = "<div class='placeholder-image'><svg class='icon' aria-hidden='true'><use href='#ti-photo' /></svg></div>";
-            const imageHtml = update.image
-                ? `<img src="${update.image}" alt="${update.hero} update" loading="lazy" onerror="this.parentElement.innerHTML=this.parentElement.dataset.fallback">`
-                : placeholderHtml;
 
-            card.innerHTML = `
-                <div class="update-image-container" data-fallback="${placeholderHtml}">
-                    ${imageHtml}
-                </div>
-                <div class="update-content">
-                    <h3 class="update-hero-name">${update.hero}</h3>
-                </div>
-            `;
+            // Build with DOM APIs so hero names and image URLs from
+            // updates.json are treated as data, never parsed as markup.
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'update-image-container';
 
+            if (update.image) {
+                const img = document.createElement('img');
+                img.src = update.image;
+                img.alt = `${update.hero} update`;
+                img.loading = 'lazy';
+                img.addEventListener('error', () => {
+                    imageContainer.replaceChildren(makePlaceholder());
+                });
+                imageContainer.appendChild(img);
+            } else {
+                imageContainer.appendChild(makePlaceholder());
+            }
+
+            const content = document.createElement('div');
+            content.className = 'update-content';
+            const heroName = document.createElement('h3');
+            heroName.className = 'update-hero-name';
+            heroName.textContent = update.hero;
+            content.appendChild(heroName);
+
+            card.append(imageContainer, content);
             updatesContainer.appendChild(card);
         });
     }

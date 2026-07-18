@@ -1,35 +1,119 @@
 <!doctype html>
 <html lang="en">
    <head>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NVXQ1EYMC"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-4NVXQ1EYMC');
-      </script>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>ArdysaModsTools - The Ultimate Dota 2 Mod Manager</title>
-      <link
-         rel="icon"
-         type="image/png"
-         href="https://raw.githubusercontent.com/Anneardysa/ArdysaMods/refs/heads/main/assets/logo.png"
+      <meta
+         http-equiv="Content-Security-Policy"
+         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://cdn.ardysamods.my.id https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://api.github.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; media-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
       />
+      <!-- Shared bootstrap: embed-mode detector + Google Analytics (gtag).
+           External file so the CSP above can block ALL inline scripts. -->
+      <script src="head.js?v=20260718b"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NVXQ1EYMC"></script>
+      <title>ArdysaModsTools - The Ultimate Dota 2 Mod Manager</title>
+      <link rel="icon" type="image/png" href="assets/logo.png" />
       <meta
          name="description"
          content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
       />
+      <meta name="theme-color" content="#000000" />
       <link rel="canonical" href="https://ardysamods.my.id/" />
-      <link rel="stylesheet" href="style.css?v=20260717e" />
+      <!-- Social sharing (Open Graph / Twitter) -->
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="ArdysaModsTools" />
+      <meta property="og:url" content="https://ardysamods.my.id/" />
+      <meta property="og:title" content="ArdysaModsTools - The Ultimate Dota 2 Mod Manager" />
+      <meta
+         property="og:description"
+         content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
+      />
+      <meta property="og:image" content="https://ardysamods.my.id/assets/app_1.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="ArdysaModsTools - The Ultimate Dota 2 Mod Manager" />
+      <meta
+         name="twitter:description"
+         content="Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface."
+      />
+      <meta name="twitter:image" content="https://ardysamods.my.id/assets/app_1.jpg" />
+      <link rel="stylesheet" href="style.css?v=20260718b" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
          rel="stylesheet"
       />
+      <!-- Structured data for search engines -->
+      <script type="application/ld+json">
+      {
+         "@context": "https://schema.org",
+         "@type": "SoftwareApplication",
+         "name": "ArdysaModsTools",
+         "operatingSystem": "Windows 10, Windows 11",
+         "applicationCategory": "GameApplication",
+         "description": "Easily install, manage, and organize your Dota 2 cosmetic mods with a sleek modern interface.",
+         "url": "https://ardysamods.my.id/",
+         "image": "https://ardysamods.my.id/assets/logo.png",
+         "downloadUrl": "https://ardysamods.my.id/download",
+         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+      </script>
+      <script type="application/ld+json">
+      {
+         "@context": "https://schema.org",
+         "@type": "FAQPage",
+         "mainEntity": [
+            {
+               "@type": "Question",
+               "name": "Is ArdysaModsTools free?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes — the app and the ModsPack are completely free. Download the installer or the portable build and you're good to go. No sign-up, no paywalls."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "How do I install mods?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Download and run ArdysaModsTools, let it detect your Dota 2 installation, then apply the ModsPack or pick skins per hero — the app handles the rest in one click."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "Do mods still work after a Dota 2 update?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Game patches can reset modded files. When that happens, just re-apply your mods from the app — and keep an eye on What's New for updated ModsPack releases."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "How do I uninstall or restore default skins?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The app can disable mods or restore Dota 2's original files at any time — no manual file digging required."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "Are the mods visual only?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. These are client-side cosmetic changes — only you see them, and gameplay is not affected."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "Where can I get help?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The community lives on Discord — support, mod showcases, and ModsPack news all land there first."
+               }
+            }
+         ]
+      }
+      </script>
    </head>
    <body>
       <!-- ── Tabler icon sprite (MIT — tabler.io) ─────────────
@@ -69,6 +153,7 @@
          <symbol id="ti-inbox" viewBox="0 0 24 24"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M4 13h3l3 3h4l3 -3h3" /></symbol>
          <symbol id="ti-tool" viewBox="0 0 24 24"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></symbol>
          <symbol id="ti-brand-windows" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" /><rect x="13" y="3.5" width="7.5" height="7.5" /><rect x="3.5" y="13" width="7.5" height="7.5" /><rect x="13" y="13" width="7.5" height="7.5" /></symbol>
+         <symbol id="ti-world" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></symbol>
       </svg>
 
       <!-- ── Site navigation ─────────────────────────────────── -->
@@ -84,22 +169,38 @@
                <span>ArdysaModsTools</span>
             </a>
             <nav class="nav-links" id="nav-links">
-               <a href="#features">Features</a>
-               <a href="#modspack">ModsPack</a>
+               <a href="#features" data-i18n="nav.features">Features</a>
+               <a href="#modspack" data-i18n="nav.modspack">ModsPack</a>
                <a
                   href="whatsnew"
                   data-modal
                   data-modal-title="What's New"
                   data-modal-icon="ti-bolt"
+                  data-i18n="nav.whatsnew"
                >What's New</a>
-               <a href="#faq">FAQ</a>
+               <a href="#faq" data-i18n="nav.faq">FAQ</a>
             </nav>
             <div class="nav-actions">
+               <div class="lang-switch" data-lang-switch>
+                  <button
+                     class="lang-switch__btn"
+                     type="button"
+                     aria-haspopup="listbox"
+                     aria-expanded="false"
+                     data-i18n-attr="aria-label:nav.language"
+                     aria-label="Change language"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-world" /></svg>
+                     <span class="lang-switch__label" data-lang-label>EN</span>
+                     <svg class="icon lang-switch__caret" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
+                  </button>
+                  <ul class="lang-switch__menu" role="listbox" data-lang-menu hidden></ul>
+               </div>
                <a class="lp-dl-toggle" href="download">
                   <svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>
-                  <span>Download</span>
+                  <span data-i18n="nav.download">Download</span>
                </a>
-               <button class="nav-toggle" aria-label="Toggle navigation">
+               <button class="nav-toggle" aria-label="Toggle navigation" data-i18n-attr="aria-label:nav.toggle">
                   <svg class="icon" aria-hidden="true"><use href="#ti-menu-2" /></svg>
                </button>
             </div>
@@ -115,7 +216,7 @@
                   <div class="hero-badges">
                      <a class="badge badge-glow" href="#download">
                         <span class="badge-dot" aria-hidden="true"></span>
-                        <span data-version>v—</span>&nbsp;available
+                        <span data-version>v—</span>&nbsp;<span data-i18n="hero.available">available</span>
                      </a>
                      <a
                         class="badge"
@@ -124,21 +225,21 @@
                         rel="noopener"
                      >
                         <svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>
-                        Open source
+                        <span data-i18n="hero.openSource">Open source</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-arrow-up-right" /></svg>
                      </a>
                   </div>
                   <h1 class="hero-title">
-                     Dota 2 Mod<br /><span class="text-dim">Manager.</span>
+                     <span data-i18n="hero.titleLine1">Dota 2 Mod</span><br /><span class="text-dim" data-i18n="hero.titleLine2">Manager.</span>
                   </h1>
-                  <p class="hero-sub">
+                  <p class="hero-sub" data-i18n="hero.sub">
                      Install, manage, and organize Dota 2 cosmetic mods with a
                      sleek one-click desktop app — backed by an always-updated
                      ModsPack. Free forever.
                   </p>
                   <div class="hero-actions">
                      <a class="btn btn-pill btn-white btn-shine" href="#download">
-                        Go to Downloads
+                        <span data-i18n="hero.ctaDownloads">Go to Downloads</span>
                         <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-right" /></svg>
                      </a>
                      <a
@@ -149,7 +250,7 @@
                         data-modal-icon="ti-stack-2"
                      >
                         <svg class="icon" aria-hidden="true"><use href="#ti-stack-2" /></svg>
-                        View ModsPack
+                        <span data-i18n="hero.ctaModspack">View ModsPack</span>
                      </a>
                      <span class="hero-socials">
                         <a
@@ -175,15 +276,15 @@
                   <ul class="hero-stats">
                      <li>
                         <strong data-stat="downloads">—</strong>
-                        <span>Downloads</span>
+                        <span data-i18n="hero.statDownloads">Downloads</span>
                      </li>
                      <li>
                         <strong data-stat="heroes">—</strong>
-                        <span>Hero Mods</span>
+                        <span data-i18n="hero.statHeroes">Hero Mods</span>
                      </li>
                      <li>
                         <strong>100%</strong>
-                        <span>Free</span>
+                        <span data-i18n="hero.statFree">Free</span>
                      </li>
                   </ul>
                </div>
@@ -217,34 +318,33 @@
             <div class="features-backdrop" aria-hidden="true"></div>
             <div class="container">
                <header class="section-head reveal">
-                  <h2 class="grad-text">Everything you need,<br />in a single app</h2>
-                  <p>
+                  <h2 class="grad-text"><span data-i18n="features.headLine1">Everything you need,</span><br /><span data-i18n="features.headLine2">in a single app</span></h2>
+                  <p data-i18n="features.headSub">
                      ArdysaModsTools handles the whole modding workflow — from
                      installing skins to keeping them updated — in one free,
                      easy-to-use desktop app.
                   </p>
                </header>
-               <!-- TODO: validate tab copy against actual app features -->
-               <div class="feature-tabs reveal" role="tablist" aria-label="App features">
+               <div class="feature-tabs reveal" role="tablist" data-i18n-attr="aria-label:features.tablist" aria-label="App features">
                   <button class="feature-tab is-active" role="tab" aria-selected="true" data-tab="0">
                      <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-wand" /></svg></span>
                      <span>
-                        <strong>One-Click Install</strong>
-                        <span>Apply the full ModsPack in a single click</span>
+                        <strong data-i18n="features.tab1Title">One-Click Install</strong>
+                        <span data-i18n="features.tab1Desc">Apply the full ModsPack in a single click</span>
                      </span>
                   </button>
                   <button class="feature-tab" role="tab" aria-selected="false" data-tab="1">
                      <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-adjustments" /></svg></span>
                      <span>
-                        <strong>Mod Manager</strong>
-                        <span>Pick skins per hero — mix &amp; match freely</span>
+                        <strong data-i18n="features.tab2Title">Mod Manager</strong>
+                        <span data-i18n="features.tab2Desc">Pick skins per hero — mix &amp; match freely</span>
                      </span>
                   </button>
                   <button class="feature-tab" role="tab" aria-selected="false" data-tab="2">
                      <span class="tab-ic"><svg class="icon" aria-hidden="true"><use href="#ti-refresh" /></svg></span>
                      <span>
-                        <strong>Auto Updates</strong>
-                        <span>Stay in sync after every Dota 2 patch</span>
+                        <strong data-i18n="features.tab3Title">Auto Updates</strong>
+                        <span data-i18n="features.tab3Desc">Stay in sync after every Dota 2 patch</span>
                      </span>
                   </button>
                </div>
@@ -273,10 +373,10 @@
          <section class="section modspack" id="modspack">
             <div class="container">
                <header class="section-head reveal">
-                  <h2 class="grad-text">One ModsPack,<br />every hero covered</h2>
+                  <h2 class="grad-text"><span data-i18n="modspack.headLine1">One ModsPack,</span><br /><span data-i18n="modspack.headLine2">every hero covered</span></h2>
                   <p>
-                     Curated skins for the whole hero pool, refreshed regularly.
-                     Latest update: <span data-modspack-date>—</span>
+                     <span data-i18n="modspack.headSub">Curated skins for the whole hero pool, refreshed regularly.</span>
+                     <span data-i18n="modspack.latestUpdate">Latest update:</span> <span data-modspack-date>—</span>
                   </p>
                </header>
                <div class="modspack-grid reveal" id="modspack-grid">
@@ -290,7 +390,7 @@
                      data-modal-title="ModsPack"
                      data-modal-icon="ti-stack-2"
                   >
-                     Browse all heroes
+                     <span data-i18n="modspack.browseAll">Browse all heroes</span>
                      <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-right" /></svg>
                   </a>
                </div>
@@ -301,9 +401,8 @@
          <section class="section trust" id="how-it-works">
             <div class="container trust-grid">
                <div class="trust-copy reveal">
-                  <h2 class="grad-text">Built in the open</h2>
-                  <!-- TODO: validate copy -->
-                  <p>
+                  <h2 class="grad-text" data-i18n="trust.head">Built in the open</h2>
+                  <p data-i18n="trust.sub">
                      No hidden magic — a desktop tool that mods your Dota 2
                      cosmetics locally, and puts everything back the way it was
                      whenever you want.
@@ -312,22 +411,22 @@
                      <li>
                         <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-code" /></svg></span>
                         <span>
-                           <strong>Source on GitHub</strong>
-                           <span>The app and every release are public on GitHub — fork it, audit it, build on it.</span>
+                           <strong data-i18n="trust.item1Title">Source on GitHub</strong>
+                           <span data-i18n="trust.item1Desc">The app and every release are public on GitHub — fork it, audit it, build on it.</span>
                         </span>
                      </li>
                      <li>
                         <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-refresh" /></svg></span>
                         <span>
-                           <strong>Fully reversible</strong>
-                           <span>Disable mods or restore Dota 2's default skins anytime, right from the app.</span>
+                           <strong data-i18n="trust.item2Title">Fully reversible</strong>
+                           <span data-i18n="trust.item2Desc">Disable mods or restore Dota 2's default skins anytime, right from the app.</span>
                         </span>
                      </li>
                      <li>
                         <span class="trust-ic"><svg class="icon" aria-hidden="true"><use href="#ti-activity" /></svg></span>
                         <span>
-                           <strong>Actively maintained</strong>
-                           <span>Frequent ModsPack refreshes and app updates, driven by the community.</span>
+                           <strong data-i18n="trust.item3Title">Actively maintained</strong>
+                           <span data-i18n="trust.item3Desc">Frequent ModsPack refreshes and app updates, driven by the community.</span>
                         </span>
                      </li>
                   </ul>
@@ -358,17 +457,16 @@
          <section class="section faq" id="faq">
             <div class="container">
                <header class="section-head reveal">
-                  <h2 class="grad-text">Common questions</h2>
-                  <p>Everything you need to know before getting started.</p>
+                  <h2 class="grad-text" data-i18n="faq.head">Common questions</h2>
+                  <p data-i18n="faq.sub">Everything you need to know before getting started.</p>
                </header>
-               <!-- TODO: validate FAQ answers -->
                <div class="faq-list reveal">
                   <details class="faq-item">
                      <summary>
-                        Is ArdysaModsTools free?
+                        <span data-i18n="faq.q1">Is ArdysaModsTools free?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n="faq.a1">
                         Yes — the app and the ModsPack are completely free.
                         Download the installer or the portable build and you're
                         good to go. No sign-up, no paywalls.
@@ -376,10 +474,10 @@
                   </details>
                   <details class="faq-item">
                      <summary>
-                        How do I install mods?
+                        <span data-i18n="faq.q2">How do I install mods?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n="faq.a2">
                         Download and run ArdysaModsTools, let it detect your
                         Dota 2 installation, then apply the ModsPack or pick
                         skins per hero — the app handles the rest in one click.
@@ -387,10 +485,10 @@
                   </details>
                   <details class="faq-item">
                      <summary>
-                        Do mods still work after a Dota 2 update?
+                        <span data-i18n="faq.q3">Do mods still work after a Dota 2 update?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n-html="faq.a3">
                         Game patches can reset modded files. When that happens,
                         just re-apply your mods from the app — and keep an eye
                         on <a href="whatsnew" data-modal data-modal-title="What's New" data-modal-icon="ti-bolt">What's New</a>
@@ -399,30 +497,30 @@
                   </details>
                   <details class="faq-item">
                      <summary>
-                        How do I uninstall or restore default skins?
+                        <span data-i18n="faq.q4">How do I uninstall or restore default skins?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n="faq.a4">
                         The app can disable mods or restore Dota 2's original
                         files at any time — no manual file digging required.
                      </div>
                   </details>
                   <details class="faq-item">
                      <summary>
-                        Are the mods visual only?
+                        <span data-i18n="faq.q5">Are the mods visual only?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n="faq.a5">
                         Yes. These are client-side cosmetic changes — only you
                         see them, and gameplay is not affected.
                      </div>
                   </details>
                   <details class="faq-item">
                      <summary>
-                        Where can I get help?
+                        <span data-i18n="faq.q6">Where can I get help?</span>
                         <svg class="icon" aria-hidden="true"><use href="#ti-chevron-down" /></svg>
                      </summary>
-                     <div class="faq-body">
+                     <div class="faq-body" data-i18n-html="faq.a6">
                         The community lives on
                         <a href="https://discord.gg/ffXw265Z7e" target="_blank" rel="noopener">Discord</a>
                         — support, mod showcases, and ModsPack news all land
@@ -437,7 +535,7 @@
                      target="_blank"
                      rel="noopener"
                   >
-                     More questions? Ask on Discord
+                     <span data-i18n="faq.askDiscord">More questions? Ask on Discord</span>
                      <svg class="icon icon-go" aria-hidden="true"><use href="#ti-arrow-up-right" /></svg>
                   </a>
                </div>
@@ -447,8 +545,8 @@
          <!-- ── Download CTA ─────────────────────────────────── -->
          <section class="section cta" id="download">
             <div class="container">
-               <h2 class="grad-text reveal">Ready to mod your Dota 2?</h2>
-               <p class="reveal">
+               <h2 class="grad-text reveal" data-i18n="cta.head">Ready to mod your Dota 2?</h2>
+               <p class="reveal" data-i18n="cta.sub">
                   Download ArdysaModsTools and get started within minutes.
                   No sign-up required.
                </p>
@@ -461,7 +559,7 @@
                      data-dl="installer"
                   >
                      <svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>
-                     Download Installer
+                     <span data-i18n="cta.installer">Download Installer</span>
                      <span class="dl-size" data-dl-size="installer"></span>
                   </a>
                   <a
@@ -472,22 +570,22 @@
                      data-dl="portable"
                   >
                      <svg class="icon" aria-hidden="true"><use href="#ti-box" /></svg>
-                     Portable (.zip)
+                     <span data-i18n="cta.portable">Portable (.zip)</span>
                      <span class="dl-size" data-dl-size="portable"></span>
                   </a>
                </div>
                <div class="spec-cards reveal">
                   <div class="spec-card">
-                     <span>Platform</span>
+                     <span data-i18n="cta.specPlatform">Platform</span>
                      <strong>Windows 10 / 11</strong>
                   </div>
                   <div class="spec-card">
-                     <span>Version</span>
+                     <span data-i18n="cta.specVersion">Version</span>
                      <strong data-version>—</strong>
                   </div>
                   <div class="spec-card">
-                     <span>Price</span>
-                     <strong>Free</strong>
+                     <span data-i18n="cta.specPrice">Price</span>
+                     <strong data-i18n="hero.statFree">Free</strong>
                   </div>
                </div>
             </div>
@@ -507,7 +605,7 @@
                   />
                   <span>ArdysaModsTools</span>
                </a>
-               <p>
+               <p data-i18n="footer.brandTagline">
                   A free desktop app for modding Dota 2 cosmetics — install,
                   manage, and organize hero skins with one click.
                </p>
@@ -523,28 +621,28 @@
                   </a>
                </div>
             </div>
-            <nav class="footer-col" aria-label="Product">
-               <h4>Product</h4>
-               <a href="#features"><svg class="icon" aria-hidden="true"><use href="#ti-layout-grid" /></svg>Features</a>
-               <a href="updates" data-modal data-modal-title="ModsPack" data-modal-icon="ti-stack-2"><svg class="icon" aria-hidden="true"><use href="#ti-stack-2" /></svg>ModsPack</a>
-               <a href="whatsnew" data-modal data-modal-title="What's New" data-modal-icon="ti-bolt"><svg class="icon" aria-hidden="true"><use href="#ti-bolt" /></svg>What's New</a>
-               <a href="#download"><svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>Download</a>
+            <nav class="footer-col" data-i18n-attr="aria-label:footer.product" aria-label="Product">
+               <h4 data-i18n="footer.product">Product</h4>
+               <a href="#features"><svg class="icon" aria-hidden="true"><use href="#ti-layout-grid" /></svg><span data-i18n="nav.features">Features</span></a>
+               <a href="updates" data-modal data-modal-title="ModsPack" data-modal-icon="ti-stack-2"><svg class="icon" aria-hidden="true"><use href="#ti-stack-2" /></svg><span data-i18n="nav.modspack">ModsPack</span></a>
+               <a href="whatsnew" data-modal data-modal-title="What's New" data-modal-icon="ti-bolt"><svg class="icon" aria-hidden="true"><use href="#ti-bolt" /></svg><span data-i18n="nav.whatsnew">What's New</span></a>
+               <a href="#download"><svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg><span data-i18n="nav.download">Download</span></a>
             </nav>
-            <nav class="footer-col" aria-label="Community">
-               <h4>Community</h4>
+            <nav class="footer-col" data-i18n-attr="aria-label:footer.community" aria-label="Community">
+               <h4 data-i18n="footer.community">Community</h4>
                <a href="https://discord.gg/ffXw265Z7e" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-discord" /></svg>Discord</a>
                <a href="https://www.youtube.com/@Ardysa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-youtube" /></svg>YouTube</a>
                <a href="https://github.com/Anneardysa/ArdysaModsTools" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-brand-github" /></svg>GitHub</a>
             </nav>
-            <nav class="footer-col" aria-label="Resources">
-               <h4>Resources</h4>
-               <a href="https://github.com/Anneardysa/ArdysaModsTools/releases" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-tag" /></svg>Releases</a>
-               <a href="https://github.com/Anneardysa/ArdysaModsTools/issues" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-alert-triangle" /></svg>Report an issue</a>
+            <nav class="footer-col" data-i18n-attr="aria-label:footer.resources" aria-label="Resources">
+               <h4 data-i18n="footer.resources">Resources</h4>
+               <a href="https://github.com/Anneardysa/ArdysaModsTools/releases" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-tag" /></svg><span data-i18n="footer.releases">Releases</span></a>
+               <a href="https://github.com/Anneardysa/ArdysaModsTools/issues" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#ti-alert-triangle" /></svg><span data-i18n="footer.reportIssue">Report an issue</span></a>
             </nav>
          </div>
          <div class="footer-bottom container">
-            <span>© 2025-2026 Ardysa — All rights reserved</span>
-            <span>Dota 2 is a trademark of Valve Corporation. Not affiliated with Valve.</span>
+            <span data-i18n="footer.rights">© 2025-2026 Ardysa — All rights reserved</span>
+            <span data-i18n="footer.trademark">Dota 2 is a trademark of Valve Corporation. Not affiliated with Valve.</span>
          </div>
       </footer>
 
@@ -571,6 +669,7 @@
                      rel="noopener"
                      title="Open full page"
                      aria-label="Open full page"
+                     data-i18n-attr="title:modal.openFull;aria-label:modal.openFull"
                   >
                      <svg class="icon" aria-hidden="true"><use href="#ti-external-link" /></svg>
                   </a>
@@ -598,6 +697,7 @@
          </div>
       </div>
 
-      <script src="script.js?v=20260717e"></script>
+      <script src="script.js?v=20260718b"></script>
+      <script src="i18n.js?v=20260718b"></script>
    </body>
 </html>

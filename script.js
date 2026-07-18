@@ -49,7 +49,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (!href || href === '#') return;
-        const target = document.querySelector(href);
+        // getElementById avoids the SyntaxError that querySelector throws on
+        // ids that aren't valid CSS selectors (e.g. "#v2.1.13-beta").
+        const target = document.getElementById(href.slice(1));
         if (target) {
             e.preventDefault();
             const navHeight = siteNav ? siteNav.offsetHeight : 0;
@@ -374,7 +376,7 @@ function renderReleaseHistory(releases, latest, container) {
         version.textContent = release.tag_name || '';
         const details = document.createElement('span');
         const date = release.published_at
-            ? new Date(release.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+            ? new Date(release.published_at).toLocaleDateString(window.i18n?.localeFor?.() || 'en-US', { year: 'numeric', month: 'short', day: 'numeric' })
             : '';
         const sizeMB = (zip.size / (1024 * 1024)).toFixed(1);
         details.textContent = date ? `${date} · ${sizeMB} MB` : `${sizeMB} MB`;
@@ -385,11 +387,12 @@ function renderReleaseHistory(releases, latest, container) {
         btn.href = zip.browser_download_url;
         btn.target = '_blank';
         btn.rel = 'noopener';
-        btn.innerHTML = tIcon('download') + '<span>Portable .zip</span>';
+        btn.innerHTML = tIcon('download') + '<span data-i18n="download.portableZip">Portable .zip</span>';
 
         row.append(meta, btn);
         container.appendChild(row);
     });
+    window.i18n?.apply?.(container);
 }
 
 async function fetchReleaseInfo() {
@@ -447,8 +450,6 @@ async function fetchReleaseInfo() {
         }
 
         if (historyEl) renderReleaseHistory(releases, latest, historyEl);
-
-        console.log(`✅ Loaded release: ${version}`);
     } catch (error) {
         console.warn('⚠️ Could not fetch releases, using fallbacks:', error.message);
         versionEls.forEach((el) => {
@@ -462,7 +463,7 @@ async function fetchReleaseInfo() {
             link.href = 'https://github.com/Anneardysa/ArdysaModsTools/releases';
             link.target = '_blank';
             link.rel = 'noopener';
-            link.textContent = 'Browse all releases on GitHub';
+            link.textContent = window.i18n?.t?.('download.browseAllReleases') || 'Browse all releases on GitHub';
             historyEl.appendChild(link);
         }
         // [data-dl] links keep their static releases/latest hrefs
@@ -494,7 +495,7 @@ async function loadModspackTeaser() {
 
         if (dateEl) {
             const maxDate = heroes.reduce((max, h) => (h.date > max ? h.date : max), heroes[0].date);
-            dateEl.textContent = new Date(maxDate).toLocaleDateString('en-US', {
+            dateEl.textContent = new Date(maxDate).toLocaleDateString(window.i18n?.localeFor?.() || 'en-US', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -502,21 +503,38 @@ async function loadModspackTeaser() {
         }
 
         if (grid) {
-            const tiles = heroes.slice(0, TEASER_COUNT).map((h) => `
-                <div class="mp-tile">
-                    <img src="${h.image}" alt="${h.hero} skin" loading="lazy" />
-                    <span class="mp-name">${h.hero}</span>
-                </div>`).join('');
+            // Build with DOM APIs (textContent / property assignment) so hero
+            // names and image URLs from updates.json can't inject markup.
+            grid.textContent = '';
+            heroes.slice(0, TEASER_COUNT).forEach((h) => {
+                const tile = document.createElement('div');
+                tile.className = 'mp-tile';
+
+                const img = document.createElement('img');
+                img.src = h.image || '';
+                img.alt = `${h.hero} skin`;
+                img.loading = 'lazy';
+
+                const name = document.createElement('span');
+                name.className = 'mp-name';
+                name.textContent = h.hero;
+
+                tile.append(img, name);
+                grid.appendChild(tile);
+            });
 
             const remaining = heroes.length - TEASER_COUNT;
-            const moreTile = `
-                <a class="mp-tile mp-more" href="updates" data-modal
-                   data-modal-title="ModsPack" data-modal-icon="ti-stack-2">
-                    ${tIcon('stack-2')}
-                    <span>+${remaining} more</span>
-                </a>`;
-
-            grid.innerHTML = tiles + moreTile;
+            const moreTile = document.createElement('a');
+            moreTile.className = 'mp-tile mp-more';
+            moreTile.href = 'updates';
+            moreTile.setAttribute('data-modal', '');
+            moreTile.dataset.modalTitle = 'ModsPack';
+            moreTile.dataset.modalIcon = 'ti-stack-2';
+            moreTile.innerHTML = tIcon('stack-2');
+            const moreLabel = document.createElement('span');
+            moreLabel.textContent = `+${remaining} ` + (window.i18n?.t?.('modspack.more') || 'more');
+            moreTile.appendChild(moreLabel);
+            grid.appendChild(moreTile);
         }
     } catch (error) {
         console.warn('⚠️ Could not load ModsPack teaser:', error.message);
@@ -528,12 +546,11 @@ async function loadModspackTeaser() {
                    data-modal-title="ModsPack" data-modal-icon="ti-stack-2"
                    style="grid-column: 1 / -1; aspect-ratio: auto; padding: 40px;">
                     ${tIcon('stack-2')}
-                    <span>Browse the ModsPack</span>
+                    <span data-i18n="modspack.browseFallback">Browse the ModsPack</span>
                 </a>`;
+            window.i18n?.apply?.(grid);
         }
     }
 }
 
 loadModspackTeaser();
-
-console.log('🎮 ArdysaModsTools - Made with ❤️ for the Dota 2 Community');

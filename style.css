@@ -1904,4 +1904,127 @@ body.modal-open {
    .t-caret {
       animation: none;
    }
+   .lang-switch__caret {
+      transition: none;
+   }
+}
+
+/* ── 12. Language switcher (i18n) ──────────────────────────── */
+
+/* FOUT gate: head.js adds .i18n-pending on <html> when a non-English
+   language is stored, so the inline English never flashes; i18n.js
+   removes it once the translation is applied (or a safety timer fires). */
+html.i18n-pending body {
+   visibility: hidden;
+}
+
+.lang-switch {
+   position: relative;
+   display: inline-flex;
+}
+
+.lang-switch__btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
+   padding: 7px 10px;
+   background: transparent;
+   border: 1px solid var(--border);
+   border-radius: var(--radius-pill);
+   color: var(--text-secondary);
+   font-family: inherit;
+   font-size: 0.82rem;
+   font-weight: 600;
+   line-height: 1;
+   cursor: pointer;
+   transition: var(--transition);
+}
+
+.lang-switch__btn:hover {
+   color: var(--text-primary);
+   border-color: var(--border-strong);
+   background: var(--accent-dim);
+}
+
+.lang-switch__label {
+   letter-spacing: 0.02em;
+}
+
+.lang-switch .icon {
+   width: 1.05rem;
+   height: 1.05rem;
+}
+
+.lang-switch__caret {
+   width: 0.85rem;
+   height: 0.85rem;
+   opacity: 0.7;
+   transition: transform 0.2s ease;
+}
+
+.lang-switch__btn[aria-expanded="true"] .lang-switch__caret {
+   transform: rotate(180deg);
+}
+
+.lang-switch__menu {
+   position: absolute;
+   top: calc(100% + 8px);
+   right: 0;
+   min-width: 190px;
+   margin: 0;
+   padding: 6px;
+   list-style: none;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-sm);
+   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+   z-index: 200;
+}
+
+.lang-switch__menu[hidden] {
+   display: none;
+}
+
+.lang-switch__option {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 14px;
+   padding: 9px 11px;
+   border-radius: var(--radius-sm);
+   color: var(--text-secondary);
+   font-size: 0.88rem;
+   cursor: pointer;
+   transition: var(--transition);
+}
+
+.lang-switch__option:hover,
+.lang-switch__option:focus-visible {
+   background: var(--accent-dim);
+   color: var(--text-primary);
+   outline: none;
+}
+
+.lang-switch__option.is-active {
+   color: var(--text-primary);
+   font-weight: 600;
+}
+
+.lang-switch__code {
+   color: var(--text-muted);
+   font-family: var(--font-mono);
+   font-size: 0.74rem;
+}
+
+.lang-switch__option.is-active .lang-switch__code {
+   color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+   .lang-switch__btn {
+      padding: 7px 8px;
+   }
+   .lang-switch__caret {
+      display: none;
+   }
 }

@@ -122,8 +122,12 @@ function inlineMarkdown(text) {
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     // Italic  *text*
     s = s.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    // Links  [text](url)
-    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    // Links  [text](url) — only emit an anchor for safe URL schemes so a
+    // release body can't smuggle in javascript:/data: links. Unsafe URLs
+    // fall back to plain text.
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) =>
+        isSafeUrl(url) ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>` : text
+    );
     // Strikethrough  ~~text~~
     s = s.replace(/~~(.+?)~~/g, '<del>$1</del>');
 
@@ -138,11 +142,21 @@ function escapeHtml(str) {
         .replace(/"/g, '&quot;');
 }
 
+// Allow only benign link schemes. Relative and anchor links are fine;
+// absolute URLs must be http(s) or mailto. Blocks javascript:/data:/etc.
+function isSafeUrl(url) {
+    const trimmed = url.trim();
+    if (/^(https?:|mailto:)/i.test(trimmed)) return true;
+    // Relative path, root-relative, or in-page anchor — no scheme present.
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(trimmed)) return true;
+    return false;
+}
+
 // ── Date formatting ──────────────────────────────────────────
 
 function formatDate(isoString) {
     const d = new Date(isoString);
-    return d.toLocaleDateString('en-US', {
+    return d.toLocaleDateString(window.i18n?.localeFor?.() || 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -176,11 +190,11 @@ function createReleaseCard(release) {
                 <a href="${githubUrl}" target="_blank" rel="noopener" class="release-version">
                     ${wnIcon('tag')} ${escapeHtml(tag)}
                 </a>
-                ${isLatest ? '<span class="latest-badge">LATEST</span>' : ''}
+                ${isLatest ? '<span class="latest-badge" data-i18n="whatsnew.latest">LATEST</span>' : ''}
             </div>
             <div class="release-meta">
                 <span class="release-date">${wnIcon('calendar')} ${date}</span>
-                <button class="copy-link-btn" data-link="${permalink}" title="Copy link to this release">
+                <button class="copy-link-btn" data-link="${permalink}" title="Copy link to this release" data-i18n-attr="title:whatsnew.copyLink">
                     ${wnIcon('link')}
                 </button>
             </div>
@@ -260,13 +274,17 @@ async function loadReleases() {
             container.innerHTML = `
                 <div class="no-releases">
                     ${wnIcon('inbox')}
-                    <p>No releases found.</p>
+                    <p data-i18n="whatsnew.noReleases">No releases found.</p>
                 </div>`;
+            window.i18n?.apply?.(container);
             return;
         }
 
-        // Mark the first release as latest
-        releases[0]._isLatest = true;
+        // Mark the newest stable release as "latest" — matching the version
+        // shown on the landing/download pages (script.js), which skips drafts
+        // and prereleases. Falls back to the first entry if all are prereleases.
+        const latestStable = releases.find(r => !r.prerelease && !r.draft) || releases[0];
+        latestStable._isLatest = true;
 
         // Clear loading placeholder
         container.innerHTML = '';
@@ -276,6 +294,10 @@ async function loadReleases() {
             container.appendChild(createReleaseCard(release));
         });
 
+        // Translate the UI chrome on the freshly rendered cards (badge, copy
+        // button) — changelog bodies stay in their authored language.
+        window.i18n?.apply?.(container);
+
         // After rendering, scroll to hash target if present
         requestAnimationFrame(() => scrollToHashTarget());
     } catch (error) {
@@ -283,9 +305,10 @@ async function loadReleases() {
         container.innerHTML = `
             <div class="no-releases error">
                 ${wnIcon('alert-triangle')}
-                <p>Failed to load releases. Please try again later.</p>
+                <p data-i18n="whatsnew.errorLoad">Failed to load releases. Please try again later.</p>
                 <small>${escapeHtml(error.message)}</small>
             </div>`;
+        window.i18n?.apply?.(container);
     }
 }
 

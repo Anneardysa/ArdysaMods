@@ -9,7 +9,7 @@
       />
       <!-- Shared bootstrap: embed-mode detector + Google Analytics (gtag).
            External file so the CSP above can block ALL inline scripts. -->
-      <script src="head.js?v=20260718b"></script>
+      <script src="head.js?v=20260723a"></script>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NVXQ1EYMC"></script>
       <title>Download ArdysaModsTools — Free Dota 2 Mod Manager</title>
       <link rel="icon" type="image/png" href="assets/logo.png" />
@@ -36,7 +36,7 @@
          content="Download ArdysaModsTools for Windows — the free one-click Dota 2 cosmetic mod manager with automatic updates."
       />
       <meta name="twitter:image" content="https://ardysamods.my.id/assets/app_1.jpg" />
-      <link rel="stylesheet" href="style.css?v=20260718b" />
+      <link rel="stylesheet" href="style.css?v=20260723a" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
@@ -65,6 +65,7 @@
          <symbol id="ti-tag" viewBox="0 0 24 24"><path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" /></symbol>
          <symbol id="ti-alert-triangle" viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.871l-8.106 -13.539a1.914 1.914 0 0 0 -3.274 .005z" /><path d="M12 16h.01" /></symbol>
          <symbol id="ti-brand-windows" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" /><rect x="13" y="3.5" width="7.5" height="7.5" /><rect x="3.5" y="13" width="7.5" height="7.5" /><rect x="13" y="13" width="7.5" height="7.5" /></symbol>
+         <symbol id="ti-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></symbol>
          <symbol id="ti-world" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></symbol>
       </svg>
 
@@ -83,7 +84,13 @@
             <nav class="nav-links" id="nav-links">
                <a href="/#features" data-i18n="nav.features">Features</a>
                <a href="/#modspack" data-i18n="nav.modspack">ModsPack</a>
-               <a href="whatsnew" data-i18n="nav.whatsnew">What's New</a>
+               <a
+                  href="whatsnew"
+                  data-modal
+                  data-modal-title="What's New"
+                  data-modal-icon="ti-bolt"
+                  data-i18n="nav.whatsnew"
+               >What's New</a>
                <a href="/#faq" data-i18n="nav.faq">FAQ</a>
             </nav>
             <div class="nav-actions">
@@ -102,7 +109,7 @@
                   </button>
                   <ul class="lang-switch__menu" role="listbox" data-lang-menu hidden></ul>
                </div>
-               <a class="lp-dl-toggle" href="download">
+               <a class="lp-dl-toggle" href="download" aria-current="page">
                   <svg class="icon" aria-hidden="true"><use href="#ti-download" /></svg>
                   <span data-i18n="nav.download">Download</span>
                </a>
@@ -133,22 +140,36 @@
                   Install, manage, and organize Dota 2 cosmetic mods — ready
                   to go in under a minute.
                </p>
-               <a
-                  class="btn btn-pill btn-white btn-shine dl-cta"
-                  href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
-                  target="_blank"
-                  rel="noopener"
-                  data-dl="installer"
-               >
-                  <svg class="icon" aria-hidden="true"><use href="#ti-brand-windows" /></svg>
-                  <span data-i18n="download.forWindows">Download for Windows</span>
-               </a>
+               <div class="dl-cta-row">
+                  <a
+                     class="btn btn-pill btn-white btn-shine dl-cta"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     data-dl="installer"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-brand-windows" /></svg>
+                     <span data-i18n="download.forWindows">Download for Windows</span>
+                     <span class="dl-size" data-dl-size="installer"></span>
+                  </a>
+                  <a
+                     class="btn btn-pill btn-dark dl-cta"
+                     href="https://github.com/Anneardysa/ArdysaModsTools/releases/latest"
+                     target="_blank"
+                     rel="noopener"
+                     data-dl="portable"
+                  >
+                     <svg class="icon" aria-hidden="true"><use href="#ti-box" /></svg>
+                     <span data-i18n="cta.portable">Portable (.zip)</span>
+                     <span class="dl-size" data-dl-size="portable"></span>
+                  </a>
+               </div>
                <span class="dl-note">
                   <svg class="icon" aria-hidden="true"><use href="#ti-refresh" /></svg>
-                  <span data-i18n="download.autoUpdates">Includes automatic updates</span>
+                  <span data-i18n="download.autoUpdates">Installer includes automatic updates</span>
                </span>
                <p class="dl-meta">
-                  Windows 10 / 11 <span data-dl-size="installer"></span> · <span data-i18n="hero.statFree">Free</span> ·
+                  Windows 10 / 11 · <span data-i18n="hero.statFree">Free</span> ·
                   <strong data-stat="downloads">—</strong> <span data-i18n="download.downloadsWord">downloads</span>
                </p>
             </div>
@@ -166,7 +187,12 @@
                   </p>
                </header>
                <div class="dl-history-card reveal">
-                  <div class="dl-history-list" id="release-history"></div>
+                  <div
+                     class="dl-history-list"
+                     id="release-history"
+                     data-empty="No older releases available right now — check the GitHub releases page."
+                     data-i18n-attr="data-empty:download.emptyHistory"
+                  ></div>
                </div>
             </div>
          </section>
@@ -277,7 +303,7 @@
          </div>
       </div>
 
-      <script src="script.js?v=20260718b"></script>
-      <script src="i18n.js?v=20260718b"></script>
+      <script src="script.js?v=20260723a"></script>
+      <script src="i18n.js?v=20260723a"></script>
    </body>
 </html>

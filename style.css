@@ -1181,7 +1181,7 @@ a {
    gap: 14px;
    margin-bottom: 46px;
 }
-.cta-buttons .dl-size {
+.dl-size {
    font-family: var(--font-mono);
    font-size: 0.72rem;
    font-weight: 500;
@@ -1243,14 +1243,18 @@ a {
 }
 .dl-hero-inner {
    position: relative;
-   max-width: 720px;
+   /* Border-box, and .container adds up to 144px of padding — 880 leaves ~736px
+      of content, enough for both CTA pills (688px) on one row. */
+   max-width: 880px;
    margin: 0 auto;
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 .dl-title {
-   font-size: clamp(2.6rem, 6vw, 4.6rem);
+   /* "ArdysaModsTools" is one 15-char word: a 2.6rem floor clipped it on every
+      phone (6vw only clears 2.6rem above a ~693px viewport). */
+   font-size: clamp(1.8rem, 8vw, 4.6rem);
    font-weight: 800;
    line-height: 1.05;
    letter-spacing: -0.02em;
@@ -1264,6 +1268,15 @@ a {
    font-size: 1.08rem;
    max-width: 480px;
    margin: 0 0 34px;
+}
+.dl-cta-row {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 14px;
+   /* .dl-hero-inner centers its children, which shrink-wraps this row below
+      its max-content width and wraps the pair — stretch it back out. */
+   width: 100%;
 }
 .dl-cta {
    padding: 17px 34px;
@@ -1300,8 +1313,10 @@ a {
    display: flex;
    flex-direction: column;
 }
-.dl-history-list:empty::before {
-   content: "No older releases available right now — check the GitHub releases page.";
+/* Only after the releases fetch settles — otherwise the empty state flashes
+   on every load. Text comes from data-empty so i18n.js can translate it. */
+.dl-history-list.is-ready:empty::before {
+   content: attr(data-empty);
    display: block;
    padding: 30px 24px;
    text-align: center;
@@ -1749,6 +1764,14 @@ body.modal-open {
 @media (max-width: 768px) {
    .section {
       padding: 76px 0;
+   }
+   /* 88vh + 180px of padding overflows short phone viewports */
+   .dl-hero {
+      min-height: auto;
+      padding: 132px 0 64px;
+   }
+   .dl-cta-row {
+      flex-direction: column;
    }
    /* Tighter nav so brand + Download pill + hamburger fit small screens */
    .nav-inner {

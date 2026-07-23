@@ -360,12 +360,9 @@ function renderReleaseHistory(releases, latest, container) {
         .filter(r => r.zip)
         .slice(0, 10);
 
-    if (!rows.length) {
-        container.textContent = '';
-        return;
-    }
-
     container.textContent = '';
+    if (!rows.length) return;
+
     rows.forEach(({ release, zip }) => {
         const row = document.createElement('div');
         row.className = 'dl-history-row';
@@ -449,7 +446,11 @@ async function fetchReleaseInfo() {
             statDownloads.textContent = total > 0 ? formatCount(total) : '10K+';
         }
 
-        if (historyEl) renderReleaseHistory(releases, latest, historyEl);
+        if (historyEl) {
+            renderReleaseHistory(releases, latest, historyEl);
+            // Unlocks the CSS empty state — see .dl-history-list.is-ready:empty
+            historyEl.classList.add('is-ready');
+        }
     } catch (error) {
         console.warn('⚠️ Could not fetch releases, using fallbacks:', error.message);
         versionEls.forEach((el) => {
@@ -458,6 +459,7 @@ async function fetchReleaseInfo() {
         if (statDownloads) statDownloads.textContent = '10K+';
         if (historyEl) {
             historyEl.innerHTML = '';
+            historyEl.classList.add('is-ready');
             const link = document.createElement('a');
             link.className = 'btn btn-dark';
             link.href = 'https://github.com/Anneardysa/ArdysaModsTools/releases';
